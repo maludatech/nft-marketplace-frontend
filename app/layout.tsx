@@ -4,6 +4,7 @@ import { APP_NAME, APP_SLOGAN, APP_DESCRIPTION } from "@/lib/constants";
 import { Toaster } from "@/components/ui/sonner";
 import { Footer } from "@/components/shared/Footer";
 import { Main } from "@/components/shared/Navbar/Main";
+import { ClientThemeProvider } from "@/components/shared/ClientThemeProvider";
 
 export const metadata: Metadata = {
   title: {
@@ -43,10 +44,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`antialiased theme-blue`}>
-        <Main />
-        {children}
-        <Toaster richColors />
-        <Footer />
+        <ClientThemeProvider>
+          <Main />
+          {children}
+          <Toaster richColors />
+          <Footer />
+        </ClientThemeProvider>
       </body>
     </html>
   );
