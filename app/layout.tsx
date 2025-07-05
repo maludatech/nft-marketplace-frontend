@@ -1,18 +1,9 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { APP_NAME, APP_SLOGAN, APP_DESCRIPTION } from "@/lib/constants";
 import { Toaster } from "@/components/ui/sonner";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+import { Footer } from "@/components/shared/Footer";
+import { Main } from "@/components/shared/Navbar/Main";
 
 export const metadata: Metadata = {
   title: {
@@ -51,11 +42,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+      <body className={` antialiased`}>
+        <Main />
         {children}
         <Toaster richColors />
+        <Footer />
       </body>
     </html>
   );
