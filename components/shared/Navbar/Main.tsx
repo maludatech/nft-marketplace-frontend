@@ -2,8 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
-import { MdNotifications } from "react-icons/md";
-import { BsSearch } from "react-icons/bs";
+import { Bell, Search } from "lucide-react";
 import { CgMenuLeft, CgMenuRight } from "react-icons/cg";
 import { Discover } from "./Discover";
 import { HelpCenter } from "./HelpCenter";
@@ -59,7 +58,7 @@ export const Main = () => {
               placeholder="Search NFT"
               className="w-full rounded-xl border border-gray-300 text-sm transition-all duration-200 ease-in-out focus:border-blue-500 focus:ring-2 focus:ring-blue-200"
             />
-            <BsSearch
+            <Search
               onClick={() => {}}
               className="cursor-pointer text-lg absolute right-4 text-muted-foreground"
             />
@@ -68,11 +67,11 @@ export const Main = () => {
 
         {/* Right Container */}
         <div className="xl:flex  hidden items-center gap-4">
-          <div className="flex flex-col justify-center items-center relative cursor-pointer">
+          <div className="flex flex-col justify-center items-center relative">
             <Button
               variant={"ghost"}
               onClick={() => openMenu("Discover")}
-              className="rounded-xl cursor-pointer text-sm"
+              className="rounded-xl text-lg cursor-pointer text-muted-foreground"
             >
               Discover
             </Button>
@@ -82,11 +81,11 @@ export const Main = () => {
               </div>
             )}
           </div>
-          <div className="flex flex-col justify-center items-center relative cursor-pointer">
+          <div className="flex flex-col justify-center items-center relative">
             <Button
               variant={"ghost"}
               onClick={() => openMenu("Help Center")}
-              className="rounded-xl cursor-pointer text-sm"
+              className="rounded-xl text-lg cursor-pointer text-muted-foreground"
             >
               Help Center
             </Button>
@@ -97,14 +96,24 @@ export const Main = () => {
             )}
           </div>
           <div className="flex flex-col justify-center items-center relative cursor-pointer">
-            <Button
-              variant={"ghost"}
-              onClick={() => openNotification()}
-              className="rounded-xl cursor-pointer text-sm"
-            >
-              <MdNotifications className="text-2xl text-muted-foreground hover:text-primary transition-all" />
-            </Button>
+            <div className="relative p-2 hover:bg-accent hover:text-accent-foreground rounded-xl">
+              <Bell
+                size={22}
+                className="text-muted-foreground transition-colors d"
+              />
+
+              <span className="absolute top-1 left-6 h-2 w-2 bg-primary rounded-full" />
+            </div>
             {notification && <Notification />}
+          </div>
+          <div className="flex flex-col justify-center items-center relative">
+            <Button
+              variant={"default"}
+              onClick={() => openMenu("Help Center")}
+              className="rounded-xl text-lg cursor-pointer text-background"
+            >
+              Create
+            </Button>
           </div>
         </div>
       </div>
