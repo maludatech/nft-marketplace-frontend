@@ -39,7 +39,7 @@ export const Discover = () => {
 
   return (
     <div className="flex flex-col gap-3 w-full">
-      {discover.map((item, index) => (
+      {discover.map((item: discoverItems, index: number) => (
         <Link
           href={`/${item.link}`}
           key={index}

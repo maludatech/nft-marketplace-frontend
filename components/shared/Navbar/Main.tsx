@@ -102,8 +102,8 @@ export const Main = () => {
         </div>
 
         {/* Desktop Right */}
-        <div className="w-full hidden xl:flex items-center">
-          <div className="flex flex-col justify-center items-center relative w-2/3">
+        <div className="w-full hidden xl:flex items-center gap-2">
+          <div className="flex flex-col justify-center items-center relative">
             <h1
               onClick={() => openMenu("Discover")}
               className="rounded-md text-lg text-muted-foreground cursor-pointer p-2 hover:bg-accent"
@@ -111,28 +111,27 @@ export const Main = () => {
               Discover
             </h1>
             {discover && (
-              <div className="absolute p-4 shadow-xl top-14 border rounded-md bg-background z-100">
+              <div className="absolute p-4 shadow-xl top-15 border rounded-md bg-background z-100 min-w-[16rem]">
                 <Discover />
               </div>
             )}
           </div>
-          <div className="flex flex-col justify-center items-center relative w-2/3">
+          <div className="flex flex-row justify-center items-center relative">
             <h1
               onClick={() => openMenu("Help Center")}
-              className="rounded-md text-lg text-muted-foreground cursor-pointer p-2 hover:bg-accent"
+              className="whitespace-nowrap rounded-md text-lg text-muted-foreground cursor-pointer p-2 hover:bg-accent"
             >
               Help Center
             </h1>
             {help && (
-              <div className="absolute p-4 shadow-xl top-14 border w-full rounded-md bg-background z-100">
+              <div className="absolute p-4 shadow-xl top-15 border rounded-md bg-background z-100 w-64">
                 <HelpCenter />
               </div>
             )}
           </div>
+
           <div className="flex items-center gap-3 w-full">
-            <div className="border-l pl-4 border-muted-foreground">
-              <ThemeToggle />
-            </div>
+            <ThemeToggle />
             <div className="relative p-2 hover:bg-accent hover:text-accent-foreground rounded-md cursor-pointer">
               <Bell
                 size={22}
@@ -144,11 +143,11 @@ export const Main = () => {
             </div>
             <Button
               variant="default"
-              className="rounded-md text-lg text-background cursor-pointer"
+              className="rounded-md text-lg text-background cursor-pointer ml-2"
             >
               Create
             </Button>
-            <div className="relative px-4">
+            <div className="relative px-2">
               <Image
                 src={image.user1}
                 alt="Profile"
