@@ -87,7 +87,7 @@ export const Main = () => {
   };
 
   return (
-    <div className="flex w-full h-20 fixed border-b shadow-lg px-10 py-6 z-50">
+    <div className="flex w-full h-20 fixed border-b shadow-lg p-6 z-50">
       <div className="flex justify-between w-full items-center body-container gap-4">
         {/* Left */}
         <div className="flex w-full items-center gap-2">
@@ -211,7 +211,10 @@ export const Main = () => {
             <SheetTrigger asChild>
               <CgMenuRight className="text-muted-foreground text-6xl cursor-pointer" />
             </SheetTrigger>
-            <SheetContent side="right" className="w-100">
+            <SheetContent
+              side="left"
+              className="w-[90vw] max-w-xs h-screen overflow-y-auto pb-8"
+            >
               <SheetTitle className="sr-only"></SheetTitle>
               <div className="flex flex-col gap-6 pt-8">
                 <Link href="/" className="px-6">
@@ -248,7 +251,7 @@ export const Main = () => {
                     placeholder="Type and Press Enter to Search"
                     className="w-full rounded-md border border-gray-300 text-sm transition-all focus:border-blue-500 focus:ring-2 focus:ring-blue-200 p-4"
                   />
-                  <Search className="cursor-pointer text-lg absolute top-3 right-8 text-muted-foreground" />
+                  <Search className="cursor-pointer text-lg absolute top-3 right-8 text-muted-foreground z-10" />
                 </div>
                 <Separator className="w-full" />
                 <div className="flex relative px-6">
