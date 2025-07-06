@@ -15,6 +15,7 @@ import { Input } from "@/components/ui/input";
 import image from "@/public/assets/image";
 import { APP_NAME } from "@/lib/constants";
 import ThemeToggle from "../ThemeToggle";
+import ThemeColorPicker from "../ThemeColorPicker";
 
 interface SocialIcon {
   platform: string;
@@ -28,14 +29,7 @@ export const Main = () => {
   const [help, setHelp] = useState<boolean>(false);
   const [notification, setNotification] = useState<boolean>(false);
   const [profile, setProfile] = useState<boolean>(false);
-
   const { theme } = useTheme();
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  if (!mounted) return null; // prevent hydration mismatch
 
   const socialIcons: SocialIcon[] = [
     {
@@ -134,6 +128,7 @@ export const Main = () => {
           </div>
 
           <div className="flex items-center gap-3 w-full">
+            <ThemeColorPicker />
             <ThemeToggle />
             <div className="relative p-2 hover:bg-accent hover:text-accent-foreground rounded-md cursor-pointer">
               <Bell

@@ -15,6 +15,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Separator } from "@/components/ui/separator";
 import ThemeToggle from "../ThemeToggle";
+import ThemeColorSwitcher from "../ThemeColorPicker";
 import image from "@/public/assets/image";
 import { APP_NAME } from "@/lib/constants";
 import { Discover } from "./Discover";
@@ -62,21 +63,25 @@ export const MobileSidebar = ({
             Explore the best NFT stories and content - then create and share
             your own.
           </div>
-          <div className="flex items-center justify-between gap-2 px-6">
-            <div className="flex items-center gap-2">
-              {socialIcons.map((icon, index) => (
-                <Link href={icon.link} key={index}>
-                  <Image
-                    src={icon.src}
-                    alt={icon.platform}
-                    width={30}
-                    height={30}
-                  />
-                </Link>
-              ))}
+          <div className="flex flex-col gap-4 px-6">
+            <div className="flex items-center justify-between gap-2">
+              <div className="flex items-center gap-2">
+                {socialIcons.map((icon, index) => (
+                  <Link href={icon.link} key={index}>
+                    <Image
+                      src={icon.src}
+                      alt={icon.platform}
+                      width={30}
+                      height={30}
+                    />
+                  </Link>
+                ))}
+              </div>
+              <ThemeToggle />
             </div>
-            <ThemeToggle />
+            <ThemeColorSwitcher />
           </div>
+
           <div className="w-full items-center p-2 relative px-6">
             <Input
               type="text"
