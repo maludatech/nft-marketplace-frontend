@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useTheme } from "next-themes";
@@ -17,11 +17,11 @@ import {
   SheetTitle,
 } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Separator } from "@/components/ui/separator";
 import image from "@/public/assets/image";
 import { APP_NAME } from "@/lib/constants";
-import { Input } from "@/components/ui/input";
 import ThemeToggle from "../ThemeToggle";
-import { Separator } from "@/components/ui/separator";
 
 interface SocialIcon {
   platform: string;
@@ -30,12 +30,19 @@ interface SocialIcon {
 }
 
 export const Main = () => {
-  const [discover, setDiscover] = useState(false);
-  const [help, setHelp] = useState(false);
-  const [notification, setNotification] = useState(false);
-  const [profile, setProfile] = useState(false);
+  const [mounted, setMounted] = useState<boolean>(false);
+  const [discover, setDiscover] = useState<boolean>(false);
+  const [help, setHelp] = useState<boolean>(false);
+  const [notification, setNotification] = useState<boolean>(false);
+  const [profile, setProfile] = useState<boolean>(false);
 
   const { theme } = useTheme();
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) return null; // prevent hydration mismatch
 
   const socialIcons: SocialIcon[] = [
     {
@@ -60,22 +67,23 @@ export const Main = () => {
       setDiscover((prev) => !prev);
       setHelp(false);
       setProfile(false);
+      setNotification(false);
     } else if (menu === "Help Center") {
       setHelp((prev) => !prev);
       setDiscover(false);
       setProfile(false);
+      setNotification(false);
     } else if (menu === "Profile") {
       setProfile((prev) => !prev);
       setDiscover(false);
       setHelp(false);
+      setNotification(false);
+    } else if (menu === "Notification") {
+      setNotification((prev) => !prev);
+      setProfile(false);
+      setDiscover(false);
+      setHelp(false);
     }
-  };
-
-  const openNotification = () => {
-    setNotification((prev) => !prev);
-    setDiscover(false);
-    setHelp(false);
-    setProfile(false);
   };
 
   return (
@@ -111,7 +119,7 @@ export const Main = () => {
               Discover
             </h1>
             {discover && (
-              <div className="absolute p-4 shadow-xl top-15 border rounded-md bg-background z-100 min-w-[16rem]">
+              <div className="absolute top-15">
                 <Discover />
               </div>
             )}
@@ -124,7 +132,7 @@ export const Main = () => {
               Help Center
             </h1>
             {help && (
-              <div className="absolute p-4 shadow-xl top-15 border rounded-md bg-background z-100 w-64">
+              <div className="absolute top-15">
                 <HelpCenter />
               </div>
             )}
@@ -136,10 +144,14 @@ export const Main = () => {
               <Bell
                 size={22}
                 className="text-muted-foreground cursor-pointer"
-                onClick={openNotification}
+                onClick={() => openMenu("Notification")}
               />
               <span className="absolute top-1 left-6 h-2 w-2 bg-primary rounded-full" />
-              {notification && <Notification />}
+              {notification && (
+                <div className="absolute top-15">
+                  <Notification />
+                </div>
+              )}
             </div>
             <Button
               variant="default"
@@ -157,7 +169,7 @@ export const Main = () => {
                 className="rounded-full object-cover cursor-pointer"
               />
               {profile && (
-                <div className="absolute p-4 shadow-xl top-15 border w-full rounded-md bg-background z-100">
+                <div className="absolute top-15">
                   <Profile />
                 </div>
               )}
@@ -166,24 +178,35 @@ export const Main = () => {
         </div>
 
         {/* Mobile Right */}
-        <div className="xl:hidden flex items-center gap-3">
+        <div className="xl:hidden flex items-center gap-2">
           <div className="relative p-2 hover:bg-accent hover:text-accent-foreground rounded-md cursor-pointer">
             <Bell
               size={22}
               className="text-muted-foreground"
-              onClick={openNotification}
+              onClick={() => openMenu("Notification")}
             />
             <span className="absolute top-1 left-6 h-2 w-2 bg-primary rounded-full" />
-            {notification && <Notification />}
+            {notification && (
+              <div className="absolute top-15">
+                <Notification />
+              </div>
+            )}
           </div>
-          <Image
-            src={image.user1}
-            alt="Profile"
-            width={35}
-            height={35}
-            onClick={() => openMenu("Profile")}
-            className="rounded-full object-cover cursor-pointer"
-          />
+          <div className="relative p-2 cursor-pointer">
+            <Image
+              src={image.user1}
+              alt="Profile"
+              width={60}
+              height={60}
+              onClick={() => openMenu("Profile")}
+              className="rounded-full object-cove"
+            />
+            {profile && (
+              <div className="absolute top-15">
+                <Profile />
+              </div>
+            )}
+          </div>
           <Sheet>
             <SheetTrigger asChild>
               <CgMenuRight className="text-muted-foreground text-6xl cursor-pointer" />
@@ -237,7 +260,7 @@ export const Main = () => {
                     Discover
                   </Button>
                   {discover && (
-                    <div className="absolute p-4 shadow-xl top-15 border rounded-md bg-background z-100">
+                    <div className="absolute top-15">
                       <Discover />
                     </div>
                   )}
@@ -251,7 +274,7 @@ export const Main = () => {
                     Help Center
                   </Button>
                   {help && (
-                    <div className="absolute p-4 shadow-xl top-15 border rounded-md bg-background z-100">
+                    <div className="absolute top-15">
                       <HelpCenter />
                     </div>
                   )}
