@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useTheme } from "next-themes";
@@ -17,12 +17,6 @@ import { APP_NAME } from "@/lib/constants";
 import ThemeToggle from "../ThemeToggle";
 import ThemeColorPicker from "../ThemeColorPicker";
 
-interface SocialIcon {
-  platform: string;
-  src: string;
-  link: string;
-}
-
 export const Main = () => {
   const [mounted, setMounted] = useState<boolean>(false);
   const [discover, setDiscover] = useState<boolean>(false);
@@ -30,24 +24,6 @@ export const Main = () => {
   const [notification, setNotification] = useState<boolean>(false);
   const [profile, setProfile] = useState<boolean>(false);
   const { theme } = useTheme();
-
-  const socialIcons: SocialIcon[] = [
-    {
-      platform: "facebook",
-      src: image.facebook,
-      link: "https://facebook.com/maludatech",
-    },
-    {
-      platform: "twitter",
-      src: image.twitter,
-      link: "https://x.com/maludatechdev",
-    },
-    {
-      platform: "telegram",
-      src: image.telegram,
-      link: "https://t.me/maludatechdev",
-    },
-  ];
 
   const openMenu = (menu: string) => {
     if (menu === "Discover") {
@@ -197,12 +173,7 @@ export const Main = () => {
               </div>
             )}
           </div>
-          <MobileSidebar
-            discover={discover}
-            help={help}
-            openMenu={openMenu}
-            socialIcons={socialIcons}
-          />
+          <MobileSidebar discover={discover} help={help} openMenu={openMenu} />
         </div>
       </div>
     </div>

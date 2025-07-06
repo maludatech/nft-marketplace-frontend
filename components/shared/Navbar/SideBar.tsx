@@ -1,10 +1,17 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
+import Image from "next/image";
 import { useTheme } from "next-themes";
 import { ChevronDown, Search } from "lucide-react";
 import { CgMenuRight } from "react-icons/cg";
+import {
+  FaFacebookF,
+  FaTwitter,
+  FaTelegramPlane,
+  FaLinkedinIn,
+  FaInstagram,
+} from "react-icons/fa";
 import {
   Sheet,
   SheetContent,
@@ -25,20 +32,42 @@ interface MobileSidebarProps {
   discover: boolean;
   help: boolean;
   openMenu: (menu: string) => void;
-  socialIcons: {
-    platform: string;
-    src: string;
-    link: string;
-  }[];
 }
 
 export const MobileSidebar = ({
   discover,
   help,
   openMenu,
-  socialIcons,
 }: MobileSidebarProps) => {
   const { theme } = useTheme();
+
+  const socialIcons = [
+    {
+      platform: "facebook",
+      icon: <FaFacebookF className="text-primary text-[18px]" />,
+      link: "https://facebook.com/maludatech",
+    },
+    {
+      platform: "twitter",
+      icon: <FaTwitter className="text-primary text-[18px]" />,
+      link: "https://x.com/maludatechdev",
+    },
+    {
+      platform: "telegram",
+      icon: <FaTelegramPlane className="text-primary text-[18px]" />,
+      link: "https://t.me/maludatechdev",
+    },
+    {
+      platform: "linkedin",
+      icon: <FaLinkedinIn className="text-primary text-[18px]" />,
+      link: "https://linkedin.com/maludatech",
+    },
+    {
+      platform: "instagram",
+      icon: <FaInstagram className="text-primary text-[18px]" />,
+      link: "https://instagram.com/ugotech.eth",
+    },
+  ];
 
   return (
     <Sheet>
@@ -59,21 +88,24 @@ export const MobileSidebar = ({
               height={130}
             />
           </Link>
+
           <div className="text-muted-foreground text-sm pt-2 px-6">
             Explore the best NFT stories and content - then create and share
             your own.
           </div>
+
           <div className="flex flex-col gap-4 px-6">
             <div className="flex items-center justify-between gap-2">
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-3">
                 {socialIcons.map((icon, index) => (
-                  <Link href={icon.link} key={index}>
-                    <Image
-                      src={icon.src}
-                      alt={icon.platform}
-                      width={30}
-                      height={30}
-                    />
+                  <Link
+                    href={icon.link}
+                    key={index}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:scale-110 transition-transform"
+                  >
+                    {icon.icon}
                   </Link>
                 ))}
               </div>
@@ -90,7 +122,9 @@ export const MobileSidebar = ({
             />
             <Search className="cursor-pointer text-lg absolute top-3 right-8 text-muted-foreground z-10" />
           </div>
+
           <Separator className="w-full" />
+
           <div className="flex relative px-6">
             <Button
               variant="ghost"
@@ -106,6 +140,7 @@ export const MobileSidebar = ({
               </div>
             )}
           </div>
+
           <div className="flex relative px-6">
             <Button
               variant="ghost"
@@ -121,7 +156,9 @@ export const MobileSidebar = ({
               </div>
             )}
           </div>
+
           <Separator className="w-full" />
+
           <div className="flex flex-col gap-4">
             <Button className="cursor-pointer rounded-md mx-6">Create</Button>
             <Button className="cursor-pointer rounded-md mx-6">
