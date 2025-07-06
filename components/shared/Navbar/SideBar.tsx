@@ -117,7 +117,12 @@ export const MobileSidebar = ({
             )}
           </div>
           <Separator className="w-full" />
-          <Button className="cursor-pointer rounded-md mx-6">Create</Button>
+          <div className="flex flex-col gap-4">
+            <Button className="cursor-pointer rounded-md mx-6">Create</Button>
+            <Button className="cursor-pointer rounded-md mx-6">
+              Connect Wallet
+            </Button>
+          </div>
         </div>
       </SheetContent>
     </Sheet>
