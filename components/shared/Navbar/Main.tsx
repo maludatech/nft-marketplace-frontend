@@ -4,21 +4,14 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useTheme } from "next-themes";
-import { Bell, Search } from "lucide-react";
-import { CgMenuRight } from "react-icons/cg";
+import { Bell, Search, ChevronDown } from "lucide-react";
 import { Discover } from "./Discover";
 import { HelpCenter } from "./HelpCenter";
 import { Notification } from "./Notification";
 import { Profile } from "./Profile";
-import {
-  Sheet,
-  SheetContent,
-  SheetTrigger,
-  SheetTitle,
-} from "@/components/ui/sheet";
+import { MobileSidebar } from "./SideBar";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Separator } from "@/components/ui/separator";
 import image from "@/public/assets/image";
 import { APP_NAME } from "@/lib/constants";
 import ThemeToggle from "../ThemeToggle";
@@ -114,12 +107,13 @@ export const Main = () => {
           <div className="flex flex-col justify-center items-center relative">
             <h1
               onClick={() => openMenu("Discover")}
-              className="rounded-md text-lg text-muted-foreground cursor-pointer p-2 hover:bg-accent"
+              className=" flex items-center gap-1 rounded-md text-lg text-muted-foreground cursor-pointer p-2 hover:bg-accent"
             >
               Discover
+              <ChevronDown size={20} />
             </h1>
             {discover && (
-              <div className="absolute top-15">
+              <div className="absolute top-15 left-1/2 -translate-x-1/2 min-w-[250px]">
                 <Discover />
               </div>
             )}
@@ -127,12 +121,13 @@ export const Main = () => {
           <div className="flex flex-row justify-center items-center relative">
             <h1
               onClick={() => openMenu("Help Center")}
-              className="whitespace-nowrap rounded-md text-lg text-muted-foreground cursor-pointer p-2 hover:bg-accent"
+              className="whitespace-nowrap flex items-center gap-1 rounded-md text-lg text-muted-foreground cursor-pointer p-2 hover:bg-accent"
             >
               Help Center
+              <ChevronDown size={20} />
             </h1>
             {help && (
-              <div className="absolute top-15">
+              <div className="absolute top-15 left-1/2 -translate-x-1/2 min-w-[250px] ">
                 <HelpCenter />
               </div>
             )}
@@ -148,7 +143,7 @@ export const Main = () => {
               />
               <span className="absolute top-1 left-6 h-2 w-2 bg-primary rounded-full" />
               {notification && (
-                <div className="absolute top-15">
+                <div className="absolute top-15 left-1/2 -translate-x-1/2 min-w-[250px] ">
                   <Notification />
                 </div>
               )}
@@ -169,7 +164,7 @@ export const Main = () => {
                 className="rounded-full object-cover cursor-pointer"
               />
               {profile && (
-                <div className="absolute top-15">
+                <div className="absolute top-15 left-1/2 -translate-x-1/2 min-w-[250px] ">
                   <Profile />
                 </div>
               )}
@@ -187,7 +182,7 @@ export const Main = () => {
             />
             <span className="absolute top-1 left-6 h-2 w-2 bg-primary rounded-full" />
             {notification && (
-              <div className="absolute top-15">
+              <div className="absolute top-14 left-1/2 -translate-x-1/2 w-[250px]">
                 <Notification />
               </div>
             )}
@@ -202,93 +197,17 @@ export const Main = () => {
               className="rounded-full object-cove"
             />
             {profile && (
-              <div className="absolute top-15">
+              <div className="absolute top-15 left-1/2 -translate-x-1/2 w-[250px]">
                 <Profile />
               </div>
             )}
           </div>
-          <Sheet>
-            <SheetTrigger asChild>
-              <CgMenuRight className="text-muted-foreground text-6xl cursor-pointer" />
-            </SheetTrigger>
-            <SheetContent
-              side="left"
-              className="w-[90vw] max-w-xs h-screen overflow-y-auto pb-8"
-            >
-              <SheetTitle className="sr-only"></SheetTitle>
-              <div className="flex flex-col gap-6 pt-8">
-                <Link href="/" className="px-6">
-                  <Image
-                    src={theme === "dark" ? image.logoLight : image.logo}
-                    alt={`${APP_NAME} logo`}
-                    width={130}
-                    height={130}
-                  />
-                </Link>
-                <div className="text-muted-foreground pt-6 px-6">
-                  Discover the most outstanding articles on all topics of life.
-                  Write your stories and share them
-                </div>
-                <div className="flex items-center justify-between gap-2 px-6">
-                  <div className="flex items-center gap-2">
-                    {socialIcons.map((icon: SocialIcon, index: number) => (
-                      <Link href={icon.link}>
-                        <Image
-                          src={icon.src}
-                          alt={icon.platform}
-                          key={index}
-                          width={30}
-                          height={30}
-                        />
-                      </Link>
-                    ))}
-                  </div>
-                  <ThemeToggle />
-                </div>
-                <div className="w-full items-center p-2 relative px-6">
-                  <Input
-                    type="text"
-                    placeholder="Type and Press Enter to Search"
-                    className="w-full rounded-md border border-gray-300 text-sm transition-all focus:border-blue-500 focus:ring-2 focus:ring-blue-200 p-4"
-                  />
-                  <Search className="cursor-pointer text-lg absolute top-3 right-8 text-muted-foreground z-10" />
-                </div>
-                <Separator className="w-full" />
-                <div className="flex relative px-6">
-                  <Button
-                    variant="ghost"
-                    onClick={() => openMenu("Discover")}
-                    className="rounded-md text-lg text-muted-foreground cursor-pointer"
-                  >
-                    Discover
-                  </Button>
-                  {discover && (
-                    <div className="absolute top-15">
-                      <Discover />
-                    </div>
-                  )}
-                </div>
-                <div className="flex relative px-6">
-                  <Button
-                    variant="ghost"
-                    onClick={() => openMenu("Help Center")}
-                    className="rounded-md text-lg text-muted-foreground cursor-pointer"
-                  >
-                    Help Center
-                  </Button>
-                  {help && (
-                    <div className="absolute top-15">
-                      <HelpCenter />
-                    </div>
-                  )}
-                </div>
-                <Separator className="w-full" />
-                <Button className="cursor-pointer rounded-md mx-6">
-                  Create
-                </Button>
-              </div>
-            </SheetContent>
-          </Sheet>
+          <MobileSidebar
+            discover={discover}
+            help={help}
+            openMenu={openMenu}
+            socialIcons={socialIcons}
+          />
         </div>
       </div>
     </div>

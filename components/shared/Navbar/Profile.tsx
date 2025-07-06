@@ -1,18 +1,94 @@
-import { FaUserAlt, FaRegImage, FaUserEdit } from "react-icons/fa";
-import { MdHelpCenter } from "react-icons/md";
-import { TbDownloadOff, TbDownload } from "react-icons/tb";
+import { ScrollArea } from "@/components/ui/scroll-area";
+import { Separator } from "@/components/ui/separator";
+import Image from "next/image";
+import Link from "next/link";
+import {
+  User,
+  Image as Gallery,
+  UserPen,
+  BadgeQuestionMark,
+  LogOut,
+} from "lucide-react";
 import image from "@/public/assets/image";
-import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 
 export const Profile = () => {
+  const profileItems = [
+    {
+      icon: <User size={20} className="text-gray-500" />,
+      title: "My Profile",
+      link: "/my-profile",
+    },
+    {
+      icon: <Gallery size={20} className="text-gray-500" />,
+      title: "My Items",
+      link: "/nft-details",
+    },
+    {
+      icon: <UserPen size={20} className="text-gray-500" />,
+      title: "Edit Profile",
+      link: "/edit-profile",
+    },
+  ];
+
+  const settingsItems = [
+    {
+      icon: <BadgeQuestionMark size={20} className="text-gray-500" />,
+      title: "Help Center",
+      link: "/help",
+    },
+    {
+      icon: <LogOut size={20} className="text-gray-500" />,
+      title: "Disconnect",
+      link: "/disconnect",
+    },
+  ];
+
   return (
-    <ScrollArea className="w-56 h-64 rounded-md border p-4 shadow-xl border rounded-md bg-background z-100">
-      <div className="p-2 space-y-2">
-        <div className="">
-          <h4>Profile</h4>
+    <ScrollArea className="w-56 h-64 rounded-md border p-4 shadow-xl bg-background z-[100]">
+      <div className="flex flex-col gap-4">
+        <div className="flex flex-row gap-3 items-center">
+          <Image
+            src={image.user1}
+            alt="user profile"
+            width={50}
+            height={50}
+            className="object-cover rounded-full"
+          />
+          <div>
+            <h1 className="text-lg font-bold">MaludaTech</h1>
+            <small className="text-xs text-muted-foreground">
+              0xb281t7xo16vbs0....
+            </small>
+          </div>
         </div>
+        <Separator />
+        <div className="flex flex-col gap-2">
+          {profileItems.map((item, index) => (
+            <Link
+              href={item.link}
+              key={index}
+              className="flex items-center gap-2 text-muted-foreground hover:bg-accent p-2 rounded-md transition-colors"
+            >
+              {item.icon}
+              <span>{item.title}</span>
+            </Link>
+          ))}
+        </div>
+        <Separator />
+        <div className="flex flex-col gap-2">
+          {settingsItems.map((item, index) => (
+            <Link
+              href={item.link}
+              key={index}
+              className="flex items-center gap-2 text-muted-foreground hover:bg-accent p-2 rounded-md transition-colors"
+            >
+              {item.icon}
+              <span>{item.title}</span>
+            </Link>
+          ))}
+        </div>
+        <div></div>
       </div>
-      <ScrollBar orientation="vertical" />
     </ScrollArea>
   );
 };
