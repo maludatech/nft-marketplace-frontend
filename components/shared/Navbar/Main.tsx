@@ -1,10 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import Image from "next/image";
 import Link from "next/link";
 import { useTheme } from "next-themes";
-import { Bell, Search, ChevronDown, Gem } from "lucide-react";
+import { Search, Gem } from "lucide-react";
 import { Discover } from "./Discover";
 import { HelpCenter } from "./HelpCenter";
 import { Notification } from "./Notification";
@@ -12,7 +11,6 @@ import { Profile } from "./Profile";
 import { MobileSidebar } from "./SideBar";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import image from "@/public/assets/image";
 import ThemeToggle from "../ThemeToggle";
 import ThemeColorPicker from "../ThemeColorPicker";
 
@@ -23,35 +21,6 @@ export const Main = () => {
     theme === "dark"
       ? "0 10px 30px rgba(255,255,255,0.1)"
       : "0 10px 30px rgba(0,0,0,0.08)";
-
-  const [discover, setDiscover] = useState<boolean>(false);
-  const [help, setHelp] = useState<boolean>(false);
-  const [notification, setNotification] = useState<boolean>(false);
-  const [profile, setProfile] = useState<boolean>(false);
-
-  const openMenu = (menu: string) => {
-    if (menu === "Discover") {
-      setDiscover((prev) => !prev);
-      setHelp(false);
-      setProfile(false);
-      setNotification(false);
-    } else if (menu === "Help Center") {
-      setHelp((prev) => !prev);
-      setDiscover(false);
-      setProfile(false);
-      setNotification(false);
-    } else if (menu === "Profile") {
-      setProfile((prev) => !prev);
-      setDiscover(false);
-      setHelp(false);
-      setNotification(false);
-    } else if (menu === "Notification") {
-      setNotification((prev) => !prev);
-      setProfile(false);
-      setDiscover(false);
-      setHelp(false);
-    }
-  };
 
   return (
     <div
@@ -77,106 +46,27 @@ export const Main = () => {
 
         {/* Desktop Right */}
         <div className="w-full hidden xl:flex items-center gap-2">
-          <div className="flex flex-col justify-center items-center relative">
-            <h1
-              onClick={() => openMenu("Discover")}
-              className=" flex items-center gap-1 rounded-md text-lg text-muted-foreground cursor-pointer p-2 hover:bg-accent"
-            >
-              Discover
-              <ChevronDown size={20} />
-            </h1>
-            {discover && (
-              <div className="absolute top-15 left-1/2 -translate-x-1/2 min-w-[250px]">
-                <Discover />
-              </div>
-            )}
-          </div>
-          <div className="flex flex-row justify-center items-center relative">
-            <h1
-              onClick={() => openMenu("Help Center")}
-              className="whitespace-nowrap flex items-center gap-1 rounded-md text-lg text-muted-foreground cursor-pointer p-2 hover:bg-accent"
-            >
-              Help Center
-              <ChevronDown size={20} />
-            </h1>
-            {help && (
-              <div className="absolute top-15 left-1/2 -translate-x-1/2 min-w-[250px] ">
-                <HelpCenter />
-              </div>
-            )}
-          </div>
-
+          <Discover />
+          <HelpCenter />
           <div className="flex items-center gap-3 w-full">
             <ThemeColorPicker />
             <ThemeToggle />
-            <div className="relative p-2 hover:bg-accent hover:text-accent-foreground rounded-md cursor-pointer">
-              <Bell
-                size={22}
-                className="text-muted-foreground cursor-pointer"
-                onClick={() => openMenu("Notification")}
-              />
-              <span className="absolute top-1 left-6 h-2 w-2 bg-primary rounded-full" />
-              {notification && (
-                <div className="absolute top-15 left-1/2 -translate-x-1/2 min-w-[250px] ">
-                  <Notification />
-                </div>
-              )}
-            </div>
+            <Notification />
             <Button
               variant="default"
               className="rounded-md text-lg text-background cursor-pointer ml-2"
             >
               Create
             </Button>
-            <div className="relative px-2">
-              <Image
-                src={image.user1}
-                alt="Profile"
-                width={40}
-                height={40}
-                onClick={() => openMenu("Profile")}
-                className="rounded-full object-cover cursor-pointer"
-              />
-              {profile && (
-                <div className="absolute top-15 left-1/2 -translate-x-1/2 min-w-[250px] ">
-                  <Profile />
-                </div>
-              )}
-            </div>
+            <Profile />
           </div>
         </div>
 
         {/* Mobile Right */}
         <div className="xl:hidden flex items-center gap-2">
-          <div className="relative p-2 hover:bg-accent hover:text-accent-foreground rounded-md cursor-pointer">
-            <Bell
-              size={22}
-              className="text-muted-foreground"
-              onClick={() => openMenu("Notification")}
-            />
-            <span className="absolute top-1 left-6 h-2 w-2 bg-primary rounded-full" />
-            {notification && (
-              <div className="absolute top-14 left-1/2 -translate-x-1/2 w-[250px]">
-                <Notification />
-              </div>
-            )}
-          </div>
-          <div className="relative p-2 cursor-pointer">
-            <Image
-              src={image.user1}
-              alt="Profile"
-              width={60}
-              height={60}
-              onClick={() => openMenu("Profile")}
-              className="rounded-full object-cove"
-            />
-            {profile && (
-              <div className="absolute top-15 left-1/2 -translate-x-1/2 w-[250px]">
-                <Profile />
-              </div>
-            )}
-          </div>
-          <MobileSidebar discover={discover} help={help} openMenu={openMenu} />
+          <Notification />
+          <Profile />
+          <MobileSidebar />
         </div>
       </div>
     </div>

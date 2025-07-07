@@ -1,8 +1,16 @@
-import Link from "next/link";
-import { useTheme } from "next-themes";
-import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
+"use client";
 
-interface links {
+import Link from "next/link";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuLabel,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import { ChevronDown } from "lucide-react";
+import { useTheme } from "next-themes";
+
+interface LinkItem {
   name: string;
   link: string;
 }
@@ -15,46 +23,43 @@ export const HelpCenter = () => {
       ? "0 10px 30px rgba(255,255,255,0.1)"
       : "0 10px 30px rgba(0,0,0,0.08)";
 
-  const helpCenter: links[] = [
-    {
-      name: "About",
-      link: "about",
-    },
-    {
-      name: "Contact Us",
-      link: "contact-us",
-    },
-    {
-      name: "Sign Up",
-      link: "sign-up",
-    },
-    {
-      name: "Sign In",
-      link: "sign-in",
-    },
-    {
-      name: "Subscription",
-      link: "subscription",
-    },
+  const helpCenter: LinkItem[] = [
+    { name: "About", link: "about" },
+    { name: "Contact Us", link: "contact-us" },
+    { name: "Sign Up", link: "sign-up" },
+    { name: "Sign In", link: "sign-in" },
+    { name: "Subscription", link: "subscription" },
   ];
 
   return (
-    <ScrollArea
-      className="w-56 h-64 rounded-md border p-4 bg-background z-100"
-      style={{ boxShadow: shadow }}
-    >
-      <div className="p-2 space-y-2">
-        {helpCenter.map((item, index) => (
-          <Link
-            href={`/${item.link}`}
-            key={index}
-            className="block rounded-md text-muted-foreground hover:bg-accent p-2 transition-colors"
-          >
-            {item.name}
-          </Link>
-        ))}
-      </div>
-      <ScrollBar orientation="vertical" />
-    </ScrollArea>
+    <div className="relative">
+      <DropdownMenu>
+        <DropdownMenuTrigger className="flex items-center gap-1 px-4 py-2 rounded-md hover:bg-accent cursor-pointer">
+          <span className="text-[16px] whitespace-nowrap text-muted-foreground">
+            Help Center
+          </span>
+          <ChevronDown className="h-4 w-4 text-muted-foreground" />
+        </DropdownMenuTrigger>
+
+        <DropdownMenuContent
+          className="w-56 space-y-1 p-2 rounded-md border bg-background z-50"
+          style={{ boxShadow: shadow }}
+        >
+          <DropdownMenuLabel className="text-muted-foreground">
+            Need Help?
+          </DropdownMenuLabel>
+
+          {helpCenter.map((item, index) => (
+            <Link
+              key={index}
+              href={`/${item.link}`}
+              className="block rounded-md px-3 py-2 text-sm text-muted-foreground hover:bg-accent transition-colors"
+            >
+              {item.name}
+            </Link>
+          ))}
+        </DropdownMenuContent>
+      </DropdownMenu>
+    </div>
   );
 };

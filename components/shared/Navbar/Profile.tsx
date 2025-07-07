@@ -1,6 +1,14 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
 import { useTheme } from "next-themes";
+import {
+  DropdownMenu,
+  DropdownMenuTrigger,
+  DropdownMenuContent,
+  DropdownMenuLabel,
+} from "@/components/ui/dropdown-menu";
 import {
   User,
   Image as Gallery,
@@ -8,9 +16,8 @@ import {
   BadgeQuestionMark,
   LogOut,
 } from "lucide-react";
-import { ScrollArea } from "@/components/ui/scroll-area";
-import { Separator } from "@/components/ui/separator";
 import image from "@/public/assets/image";
+import { Separator } from "@/components/ui/separator";
 
 export const Profile = () => {
   const { theme } = useTheme();
@@ -19,19 +26,20 @@ export const Profile = () => {
     theme === "dark"
       ? "0 10px 30px rgba(255,255,255,0.1)"
       : "0 10px 30px rgba(0,0,0,0.08)";
+
   const profileItems = [
     {
-      icon: <User size={20} className="text-gray-500" />,
+      icon: <User size={18} />,
       title: "My Profile",
       link: "/my-profile",
     },
     {
-      icon: <Gallery size={20} className="text-gray-500" />,
+      icon: <Gallery size={18} />,
       title: "My Items",
       link: "/nft-details",
     },
     {
-      icon: <UserPen size={20} className="text-gray-500" />,
+      icon: <UserPen size={18} />,
       title: "Edit Profile",
       link: "/edit-profile",
     },
@@ -39,66 +47,84 @@ export const Profile = () => {
 
   const settingsItems = [
     {
-      icon: <BadgeQuestionMark size={20} className="text-gray-500" />,
+      icon: <BadgeQuestionMark size={18} />,
       title: "Help Center",
       link: "/help",
     },
     {
-      icon: <LogOut size={20} className="text-gray-500" />,
+      icon: <LogOut size={18} />,
       title: "Disconnect",
       link: "/disconnect",
     },
   ];
 
   return (
-    <ScrollArea
-      className="w-56 h-64 rounded-md border p-4 bg-background z-[100]"
-      style={{ boxShadow: shadow }}
-    >
-      <div className="flex flex-col gap-4">
-        <div className="flex flex-row gap-3 items-center">
+    <div className="relative">
+      <DropdownMenu>
+        <DropdownMenuTrigger className="flex items-center gap-2 px-4 py-2 rounded-md hover:bg-accent cursor-pointer">
           <Image
             src={image.user1}
             alt="user profile"
-            width={50}
-            height={50}
-            className="object-cover rounded-full"
+            width={32}
+            height={32}
+            className="rounded-full object-cover"
           />
-          <div>
-            <h1 className="text-lg font-bold">MaludaTech</h1>
-            <small className="text-xs text-muted-foreground">
-              0xb281t7xo16vbs0....
-            </small>
+          <span className="text-sm text-muted-foreground">MaludaTech</span>
+        </DropdownMenuTrigger>
+
+        <DropdownMenuContent
+          className="w-64 p-4 space-y-3 rounded-md border bg-background z-50"
+          style={{ boxShadow: shadow }}
+        >
+          <DropdownMenuLabel className="flex items-center gap-3">
+            <Image
+              src={image.user1}
+              alt="user profile"
+              width={42}
+              height={42}
+              className="rounded-full object-cover"
+            />
+            <div>
+              <h1 className="text-sm font-semibold text-foreground">
+                MaludaTech
+              </h1>
+              <small className="text-xs text-muted-foreground">
+                0xb281t7xo16vbs0....
+              </small>
+            </div>
+          </DropdownMenuLabel>
+
+          <Separator />
+
+          <div className="flex flex-col gap-1">
+            {profileItems.map((item, index) => (
+              <Link
+                key={index}
+                href={item.link}
+                className="flex items-center gap-2 p-2 rounded-md text-muted-foreground hover:bg-accent text-sm transition-colors"
+              >
+                {item.icon}
+                {item.title}
+              </Link>
+            ))}
           </div>
-        </div>
-        <Separator />
-        <div className="flex flex-col gap-2">
-          {profileItems.map((item, index) => (
-            <Link
-              href={item.link}
-              key={index}
-              className="flex items-center gap-2 text-muted-foreground hover:bg-accent p-2 rounded-md transition-colors"
-            >
-              {item.icon}
-              <span>{item.title}</span>
-            </Link>
-          ))}
-        </div>
-        <Separator />
-        <div className="flex flex-col gap-2">
-          {settingsItems.map((item, index) => (
-            <Link
-              href={item.link}
-              key={index}
-              className="flex items-center gap-2 text-muted-foreground hover:bg-accent p-2 rounded-md transition-colors"
-            >
-              {item.icon}
-              <span>{item.title}</span>
-            </Link>
-          ))}
-        </div>
-        <div></div>
-      </div>
-    </ScrollArea>
+
+          <Separator />
+
+          <div className="flex flex-col gap-1">
+            {settingsItems.map((item, index) => (
+              <Link
+                key={index}
+                href={item.link}
+                className="flex items-center gap-2 p-2 rounded-md text-muted-foreground hover:bg-accent text-sm transition-colors"
+              >
+                {item.icon}
+                {item.title}
+              </Link>
+            ))}
+          </div>
+        </DropdownMenuContent>
+      </DropdownMenu>
+    </div>
   );
 };

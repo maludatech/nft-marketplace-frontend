@@ -1,7 +1,15 @@
+"use client";
+
 import Image from "next/image";
 import { useTheme } from "next-themes";
 import image from "@/public/assets/image";
-import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
+import {
+  DropdownMenu,
+  DropdownMenuTrigger,
+  DropdownMenuContent,
+  DropdownMenuLabel,
+} from "@/components/ui/dropdown-menu";
+import { Bell } from "lucide-react";
 
 export const Notification = () => {
   const { theme } = useTheme();
@@ -12,29 +20,41 @@ export const Notification = () => {
       : "0 10px 30px rgba(0,0,0,0.08)";
 
   return (
-    <ScrollArea
-      className="w-56 h-64 p-4 border rounded-md bg-background z-100"
-      style={{ boxShadow: shadow }}
-    >
-      <div className="p-2 space-y-2">
-        <p className="text-xl font-semibold mb-8"></p>
-        <div className="rounded-md">
-          <Image
-            src={image.user1}
-            alt="profile"
-            width={50}
-            height={50}
-            className="object-cover rounded-full"
-          />
-        </div>
-        <div className="">
-          <h4>Maludatech</h4>
-          <p>Address </p>
-          <small>3 minutes ago</small>
-          <span className=""></span>
-        </div>
-      </div>
-      <ScrollBar orientation="vertical" />
-    </ScrollArea>
+    <div className="relative">
+      <DropdownMenu>
+        <DropdownMenuTrigger className="flex items-center relative gap-1 px-4 py-2 rounded-md hover:bg-accent cursor-pointer">
+          <Bell size={22} className="text-muted-foreground cursor-pointer" />
+          <span className="absolute top-1 left-8 h-2 w-2 bg-primary rounded-full" />
+        </DropdownMenuTrigger>
+
+        <DropdownMenuContent
+          className="w-72 space-y-2 p-4 rounded-md border bg-background z-50"
+          style={{ boxShadow: shadow }}
+        >
+          <DropdownMenuLabel className="text-muted-foreground">
+            Recent Activity
+          </DropdownMenuLabel>
+
+          <div className="flex items-start gap-3">
+            <Image
+              src={image.user1}
+              alt="profile"
+              width={45}
+              height={45}
+              className="rounded-full object-cover"
+            />
+            <div className="space-y-1">
+              <h4 className="text-sm font-medium text-foreground">
+                Maludatech
+              </h4>
+              <p className="text-sm text-muted-foreground">Address</p>
+              <small className="text-xs text-muted-foreground">
+                3 minutes ago
+              </small>
+            </div>
+          </div>
+        </DropdownMenuContent>
+      </DropdownMenu>
+    </div>
   );
 };

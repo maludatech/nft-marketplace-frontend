@@ -28,17 +28,7 @@ import { APP_NAME } from "@/lib/constants";
 import { Discover } from "./Discover";
 import { HelpCenter } from "./HelpCenter";
 
-interface MobileSidebarProps {
-  discover: boolean;
-  help: boolean;
-  openMenu: (menu: string) => void;
-}
-
-export const MobileSidebar = ({
-  discover,
-  help,
-  openMenu,
-}: MobileSidebarProps) => {
+export const MobileSidebar = () => {
   const { theme } = useTheme();
 
   const socialIcons = [
@@ -112,7 +102,6 @@ export const MobileSidebar = ({
             </div>
             <ThemeColorSwitcher />
           </div>
-
           <div className="w-full items-center p-2 relative px-6">
             <Input
               type="text"
@@ -121,43 +110,10 @@ export const MobileSidebar = ({
             />
             <Search className="cursor-pointer text-lg absolute top-3 right-8 text-muted-foreground z-10" />
           </div>
-
           <Separator className="w-full" />
-
-          <div className="flex relative px-6">
-            <Button
-              variant="ghost"
-              onClick={() => openMenu("Discover")}
-              className="flex items-center gap-1 rounded-md text-[16px] text-muted-foreground cursor-pointer"
-            >
-              Discover
-              <ChevronDown size={20} />
-            </Button>
-            {discover && (
-              <div className="absolute top-15">
-                <Discover />
-              </div>
-            )}
-          </div>
-
-          <div className="flex relative px-6">
-            <Button
-              variant="ghost"
-              onClick={() => openMenu("Help Center")}
-              className="flex items-center gap-1 rounded-md text-[16px] text-muted-foreground cursor-pointer"
-            >
-              Help Center
-              <ChevronDown size={20} />
-            </Button>
-            {help && (
-              <div className="absolute top-15">
-                <HelpCenter />
-              </div>
-            )}
-          </div>
-
+          <Discover />
+          <HelpCenter />
           <Separator className="w-full" />
-
           <div className="flex flex-col gap-4">
             <Button className="cursor-pointer rounded-md mx-6">Create</Button>
             <Button className="cursor-pointer rounded-md mx-6">
