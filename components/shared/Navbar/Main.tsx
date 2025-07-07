@@ -49,7 +49,7 @@ export const Main = () => {
   };
 
   return (
-    <div className="flex w-full h-20 fixed border-b shadow-lg p-6 z-50">
+    <div className="flex w-full h-20 fixed border-b shadow-lg p-6 z-50 bg-background">
       <div className="flex justify-between w-full items-center body-container gap-4">
         {/* Left */}
         <div className="flex w-full items-center gap-2">

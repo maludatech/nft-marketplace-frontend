@@ -31,7 +31,7 @@ export const HelpCenter = () => {
   ];
 
   return (
-    <ScrollArea className="w-56 h-64 rounded-md border p-4 shadow-xl border rounded-md bg-background z-100">
+    <ScrollArea className="w-56 h-64 rounded-md border p-4 shadow-xl bg-background z-100">
       <div className="p-2 space-y-2">
         {helpCenter.map((item, index) => (
           <Link

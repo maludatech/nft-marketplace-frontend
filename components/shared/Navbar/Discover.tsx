@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
+
 interface discoverItems {
   name: string;
   link: string;
