@@ -26,13 +26,13 @@ export default function ThemeColorSwitcher() {
   const { themeColor, setThemeColor } = useThemeColor();
 
   return (
-    <div className="relative">
+    <div className="relative bg-background">
       <DropdownMenu>
         <DropdownMenuTrigger className="flex items-center gap-1 px-4 py-2 rounded-md bg-accent hover:bg-foreground/10 xl:bg-transparent xl:hover:bg-accent cursor-pointer">
           <span className="text-[16px] xl:text-lg text-primary">Theme</span>
           <ChevronDown className="h-4 w-4 text-muted-foreground" />
         </DropdownMenuTrigger>
-        <DropdownMenuContent className="w-56 top-0 xl:top-3 xl:left-1/2 xl:-translate-x-1/2">
+        <DropdownMenuContent className="w-56 ">
           <DropdownMenuLabel>Theme</DropdownMenuLabel>
           <DropdownMenuRadioGroup
             value={themeColor}

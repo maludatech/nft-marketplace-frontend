@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { useTheme } from "next-themes";
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 
 interface discoverItems {
@@ -7,6 +8,13 @@ interface discoverItems {
 }
 
 export const Discover = () => {
+  const { theme } = useTheme();
+
+  const shadow =
+    theme === "dark"
+      ? "0 10px 30px rgba(255,255,255,0.1)" // white-ish shadow
+      : "0 10px 30px rgba(0,0,0,0.08)"; // soft gray shadow
+
   const discover: discoverItems[] = [
     { name: "Collection", link: "collection" },
     { name: "Search", link: "search" },
@@ -18,7 +26,10 @@ export const Discover = () => {
   ];
 
   return (
-    <ScrollArea className="w-56 h-64 rounded-md border p-4 shadow-xl bg-background z-100">
+    <ScrollArea
+      className="w-56 h-64 rounded-md border p-4 bg-background z-100"
+      style={{ boxShadow: shadow }}
+    >
       <div className="p-2 space-y-2">
         {discover.map((item, index) => (
           <Link

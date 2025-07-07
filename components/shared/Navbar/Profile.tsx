@@ -1,7 +1,6 @@
-import { ScrollArea } from "@/components/ui/scroll-area";
-import { Separator } from "@/components/ui/separator";
 import Image from "next/image";
 import Link from "next/link";
+import { useTheme } from "next-themes";
 import {
   User,
   Image as Gallery,
@@ -9,9 +8,17 @@ import {
   BadgeQuestionMark,
   LogOut,
 } from "lucide-react";
+import { ScrollArea } from "@/components/ui/scroll-area";
+import { Separator } from "@/components/ui/separator";
 import image from "@/public/assets/image";
 
 export const Profile = () => {
+  const { theme } = useTheme();
+
+  const shadow =
+    theme === "dark"
+      ? "0 10px 30px rgba(255,255,255,0.1)"
+      : "0 10px 30px rgba(0,0,0,0.08)";
   const profileItems = [
     {
       icon: <User size={20} className="text-gray-500" />,
@@ -44,7 +51,10 @@ export const Profile = () => {
   ];
 
   return (
-    <ScrollArea className="w-56 h-64 rounded-md border p-4 shadow-xl bg-background z-[100]">
+    <ScrollArea
+      className="w-56 h-64 rounded-md border p-4 bg-background z-[100]"
+      style={{ boxShadow: shadow }}
+    >
       <div className="flex flex-col gap-4">
         <div className="flex flex-row gap-3 items-center">
           <Image
