@@ -26,7 +26,7 @@ export const Services = () => {
   ];
   return (
     <div className="w-full min-h-screen">
-      <div className="body-container py-36 px-12 grid sm:grid-cols-2 md:grid-cols-4 place-items-start gap-16 sm:gap-8 w-full">
+      <div className="body-container pt-36 px-12 grid sm:grid-cols-2 md:grid-cols-4 place-items-start gap-16 sm:gap-8 w-full">
         {services.map((service, index) => (
           <div
             className="flex flex-col gap-4 justify-center items-center w-full"
@@ -39,8 +39,10 @@ export const Services = () => {
               height={100}
               className="object-contain"
             />
-            <div className="text-primary">Step {index + 1}</div>
-            <h1 className="font-semibold">{service.title}</h1>
+            <div className="bg-primary/50 rounded-full px-4 py-2 text-white font-semibold">
+              Step {index + 1}
+            </div>
+            <h1 className="font-bold">{service.title}</h1>
             <p className="text-muted-foreground text-sm text-center">
               {service.description}
             </p>
