@@ -6,7 +6,7 @@ export const HeroSection = () => {
   return (
     <div className="w-full min-h-1/2">
       <div className="body-container pt-36 px-12 flex flex-col md:flex-row gap-14 md:gap-8">
-        <div className="flex flex-col gap-6 md:w-1/2">
+        <div className="flex flex-col gap-6 md:gap-8 md:w-1/2 lg:pt-12">
           <h1 className="text-5xl md:text-6xl font-bold text-foreground">
             Discover, collect, and sell NFTs 🖼️
           </h1>
