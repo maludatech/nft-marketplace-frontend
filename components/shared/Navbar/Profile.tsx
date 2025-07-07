@@ -59,72 +59,69 @@ export const Profile = () => {
   ];
 
   return (
-    <div className="relative">
-      <DropdownMenu>
-        <DropdownMenuTrigger className="flex items-center gap-2 px-4 py-2 rounded-md hover:bg-accent cursor-pointer">
+    <DropdownMenu>
+      <DropdownMenuTrigger className=" px-4 py-2 rounded-md hover:bg-accent cursor-pointer">
+        <Image
+          src={image.user1}
+          alt="user profile"
+          width={100}
+          height={100}
+          className="rounded-full object-cover"
+        />
+      </DropdownMenuTrigger>
+
+      <DropdownMenuContent
+        className="w-64 p-4 space-y-3 rounded-md border bg-background z-50"
+        style={{ boxShadow: shadow }}
+      >
+        <DropdownMenuLabel className="flex items-center gap-3">
           <Image
             src={image.user1}
             alt="user profile"
-            width={32}
-            height={32}
+            width={42}
+            height={42}
             className="rounded-full object-cover"
           />
-          <span className="text-sm text-muted-foreground">MaludaTech</span>
-        </DropdownMenuTrigger>
-
-        <DropdownMenuContent
-          className="w-64 p-4 space-y-3 rounded-md border bg-background z-50"
-          style={{ boxShadow: shadow }}
-        >
-          <DropdownMenuLabel className="flex items-center gap-3">
-            <Image
-              src={image.user1}
-              alt="user profile"
-              width={42}
-              height={42}
-              className="rounded-full object-cover"
-            />
-            <div>
-              <h1 className="text-sm font-semibold text-foreground">
-                MaludaTech
-              </h1>
-              <small className="text-xs text-muted-foreground">
-                0xb281t7xo16vbs0....
-              </small>
-            </div>
-          </DropdownMenuLabel>
-
-          <Separator />
-
-          <div className="flex flex-col gap-1">
-            {profileItems.map((item, index) => (
-              <Link
-                key={index}
-                href={item.link}
-                className="flex items-center gap-2 p-2 rounded-md text-muted-foreground hover:bg-accent text-sm transition-colors"
-              >
-                {item.icon}
-                {item.title}
-              </Link>
-            ))}
+          <div>
+            <h1 className="text-sm font-semibold text-foreground">
+              MaludaTech
+            </h1>
+            <small className="text-xs text-muted-foreground">
+              0xb281t7xo16vbs0....
+            </small>
           </div>
+        </DropdownMenuLabel>
 
-          <Separator />
+        <Separator />
 
-          <div className="flex flex-col gap-1">
-            {settingsItems.map((item, index) => (
-              <Link
-                key={index}
-                href={item.link}
-                className="flex items-center gap-2 p-2 rounded-md text-muted-foreground hover:bg-accent text-sm transition-colors"
-              >
-                {item.icon}
-                {item.title}
-              </Link>
-            ))}
-          </div>
-        </DropdownMenuContent>
-      </DropdownMenu>
-    </div>
+        <div className="flex flex-col gap-1">
+          {profileItems.map((item, index) => (
+            <Link
+              key={index}
+              href={item.link}
+              className="flex items-center gap-2 p-2 rounded-md text-muted-foreground hover:bg-accent text-sm transition-colors"
+            >
+              {item.icon}
+              {item.title}
+            </Link>
+          ))}
+        </div>
+
+        <Separator />
+
+        <div className="flex flex-col gap-1">
+          {settingsItems.map((item, index) => (
+            <Link
+              key={index}
+              href={item.link}
+              className="flex items-center gap-2 p-2 rounded-md text-muted-foreground hover:bg-accent text-sm transition-colors"
+            >
+              {item.icon}
+              {item.title}
+            </Link>
+          ))}
+        </div>
+      </DropdownMenuContent>
+    </DropdownMenu>
   );
 };

@@ -62,7 +62,7 @@ export const MobileSidebar = () => {
   return (
     <Sheet>
       <SheetTrigger asChild>
-        <CgMenuRight className="text-muted-foreground text-6xl cursor-pointer" />
+        <CgMenuRight className="text-muted-foreground text-4xl cursor-pointer" />
       </SheetTrigger>
       <SheetContent
         side="left"

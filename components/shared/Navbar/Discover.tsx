@@ -34,34 +34,32 @@ export const Discover = () => {
   ];
 
   return (
-    <div className="relative">
-      <DropdownMenu>
-        <DropdownMenuTrigger className="flex items-center gap-1 px-4 py-2 rounded-md hover:bg-accent cursor-pointer">
-          <span className="text-[16px] whitespace-nowrap text-muted-foreground">
-            Discover
-          </span>
-          <ChevronDown className="h-4 w-4 text-muted-foreground" />
-        </DropdownMenuTrigger>
+    <DropdownMenu>
+      <DropdownMenuTrigger className="flex items-center gap-1 px-4 py-2 rounded-md hover:bg-accent cursor-pointer">
+        <span className="text-[16px] whitespace-nowrap text-muted-foreground">
+          Discover
+        </span>
+        <ChevronDown className="h-4 w-4 text-muted-foreground" />
+      </DropdownMenuTrigger>
 
-        <DropdownMenuContent
-          className="w-56 space-y-1 p-2 rounded-md border bg-background z-50"
-          style={{ boxShadow: shadow }}
-        >
-          <DropdownMenuLabel className="text-muted-foreground">
-            Explore More
-          </DropdownMenuLabel>
+      <DropdownMenuContent
+        className="w-56 space-y-1 p-2 rounded-md border bg-background z-50"
+        style={{ boxShadow: shadow }}
+      >
+        <DropdownMenuLabel className="text-muted-foreground">
+          Explore More
+        </DropdownMenuLabel>
 
-          {discover.map((item, index) => (
-            <Link
-              key={index}
-              href={`/${item.link}`}
-              className="block rounded-md px-3 py-2 text-sm text-muted-foreground hover:bg-accent transition-colors"
-            >
-              {item.name}
-            </Link>
-          ))}
-        </DropdownMenuContent>
-      </DropdownMenu>
-    </div>
+        {discover.map((item, index) => (
+          <Link
+            key={index}
+            href={`/${item.link}`}
+            className="block rounded-md px-3 py-2 text-sm text-muted-foreground hover:bg-accent transition-colors"
+          >
+            {item.name}
+          </Link>
+        ))}
+      </DropdownMenuContent>
+    </DropdownMenu>
   );
 };
