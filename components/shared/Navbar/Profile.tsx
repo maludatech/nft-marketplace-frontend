@@ -60,14 +60,8 @@ export const Profile = () => {
 
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger className=" px-4 py-2 rounded-md hover:bg-accent cursor-pointer">
-        <Image
-          src={image.user1}
-          alt="user profile"
-          width={100}
-          height={100}
-          className="rounded-full object-cover"
-        />
+      <DropdownMenuTrigger className="cursor-pointer p-2 rounded-md hover:bg-accent transition-colors">
+        <User size={28} className="text-muted-foreground" />
       </DropdownMenuTrigger>
 
       <DropdownMenuContent

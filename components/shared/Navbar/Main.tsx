@@ -63,7 +63,7 @@ export const Main = () => {
         </div>
 
         {/* Mobile Right */}
-        <div className="xl:hidden flex items-center">
+        <div className="xl:hidden flex items-center gap-1">
           <Notification />
           <Profile />
           <MobileSidebar />

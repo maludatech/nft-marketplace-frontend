@@ -21,7 +21,7 @@ export const Notification = () => {
 
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger className="flex items-center relative gap-1 px-4 py-2 rounded-md hover:bg-accent cursor-pointer">
+      <DropdownMenuTrigger className="flex items-center relative gap-1 p-2 rounded-md hover:bg-accent cursor-pointer">
         <Bell size={22} className="text-muted-foreground cursor-pointer" />
         <span className="absolute top-1 left-8 h-2 w-2 bg-primary rounded-full" />
       </DropdownMenuTrigger>
