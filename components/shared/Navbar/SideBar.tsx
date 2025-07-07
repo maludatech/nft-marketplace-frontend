@@ -70,13 +70,18 @@ export const MobileSidebar = () => {
       >
         <SheetTitle className="sr-only"></SheetTitle>
         <div className="flex flex-col gap-6 pt-8">
-          <Link href={"/"} className="flex items-center gap-1 pl-6">
+          <Link
+            href="/"
+            className="group flex items-center gap-2 rounded-xl px-2 py-1"
+          >
             <Gem
-              size={42}
+              size={36}
               strokeWidth={1.75}
-              className="text-primary group-hover:animate-sparkle transition-all duration-300"
+              className="text-primary transition-transform duration-300 group-hover:rotate-12 group-hover:scale-110"
             />
-            <h1 className="text-lg">Ciscryp</h1>
+            <span className="text-xl font-semibold tracking-wide text-foreground">
+              Ciscryp
+            </span>
           </Link>
           <div className="text-muted-foreground text-sm pt-2 px-6">
             Explore the best NFT stories and content - then create and share

@@ -79,17 +79,23 @@ export const Footer = () => {
   ];
 
   return (
-    <div className="w-full bg-background xl:fixed xl:bottom-0 border-t z-40">
+    <div className="w-full bg-background h-screen border-t z-40">
       <div className="body-container px-6 py-12 ">
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 items-start gap-12 w-full">
           <div className="flex flex-col gap-4 justify-center">
-            <Link href={"/"} className="group flex items-center gap-1">
+            <Link
+              href="/"
+              className="group flex items-center gap-2 rounded-xl px-2 py-1"
+              aria-label="Go to home page"
+            >
               <Gem
-                size={42}
+                size={36}
                 strokeWidth={1.75}
-                className="text-primary group-hover:animate-sparkle transition-all duration-300"
+                className="text-primary transition-transform duration-300 group-hover:rotate-12 group-hover:scale-110"
               />
-              <h1 className="text-lg">Ciscryp</h1>
+              <span className="text-xl font-semibold tracking-wide text-foreground">
+                Ciscryp
+              </span>
             </Link>
             <p className="text-sm text-muted-foreground">
               The world’s first and largest digital marketplace for crypto
