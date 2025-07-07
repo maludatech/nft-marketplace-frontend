@@ -25,7 +25,7 @@ export const Services = () => {
     },
   ];
   return (
-    <div className="w-full min-h-1/2">
+    <section className="w-full min-h-1/2">
       <div className="body-container pt-36 px-12 grid sm:grid-cols-2 lg:grid-cols-4 place-items-start gap-16 sm:gap-8 w-full">
         {services.map((service, index) => (
           <div
@@ -49,6 +49,6 @@ export const Services = () => {
           </div>
         ))}
       </div>
-    </div>
+    </section>
   );
 };
