@@ -81,7 +81,7 @@ export const NFTSlider = () => {
   ];
 
   return (
-    <div className="w-full max-h-screen">
+    <div className="w-full min-h-1/2">
       <div className="body-container pt-36 px-12 flex flex-col w-full">
         <Carousel></Carousel>
       </div>
