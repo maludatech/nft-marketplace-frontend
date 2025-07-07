@@ -5,9 +5,9 @@ import { Search } from "lucide-react";
 
 export const HeroSection = () => {
   return (
-    <div className="w-full h-screen">
-      <div className="body-container pt-40 pb-12 px-12 flex flex-col sm:flex-row gap-14 sm:gap-8">
-        <div className="flex flex-col gap-6">
+    <div className="w-full min-h-screen">
+      <div className="body-container pt-40 pb-12 px-12 flex flex-col md:flex-row gap-14 md:gap-8">
+        <div className="flex flex-col gap-6 md:w-1/2">
           <h1 className="text-5xl md:text-6xl font-bold text-foreground">
             Discover, collect, and sell NFTs 🖼️
           </h1>
@@ -15,11 +15,12 @@ export const HeroSection = () => {
             Discover the most outstanding NTFs in all topics of life. Creative
             your NTFs and sell them
           </p>
-          <Button className="rounded-full flex items-center gap-2 text-[16px] cursor-pointer p-6.5 w-fit text-white">
-            Start your search <Search />
-          </Button>
+          <button className="flex items-center gap-2 rounded-full bg-primary px-6 py-3 text-base font-medium text-white w-fit cursor-pointer hover:bg-primary/90 transition-colors duration-300">
+            Start your search
+            <Search className="text-lg" />
+          </button>
         </div>
-        <div className="flex flex-col gap-4">
+        <div className="flex flex-col gap-4 md:w-1/2">
           <Image
             src={image.hero}
             alt="hero"
