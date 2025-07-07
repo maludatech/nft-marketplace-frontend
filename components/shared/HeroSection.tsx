@@ -1,6 +1,5 @@
 import Image from "next/image";
 import image from "@/public/assets/image";
-import { Button } from "../ui/button";
 import { Search } from "lucide-react";
 
 export const HeroSection = () => {
