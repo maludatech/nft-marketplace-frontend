@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     siteName: APP_NAME,
     images: [
       {
-        url: "/assets/images/og-image.png",
+        url: "/assets/image/og-image.png",
         width: 1200,
         height: 630,
         alt: `${APP_NAME} Preview`,
@@ -33,7 +33,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: APP_NAME,
     description: APP_DESCRIPTION,
-    images: ["/assets/images/og-image.png"],
+    images: ["/assets/image/og-image.png"],
   },
 };
 
