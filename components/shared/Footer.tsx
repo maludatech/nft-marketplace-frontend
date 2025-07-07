@@ -79,77 +79,79 @@ export const Footer = () => {
   ];
 
   return (
-    <div className="w-full xl:fixed xl:bottom-0 border-t px-6 py-12 z-40">
-      <div className="grid sm:grid-cols-2 lg:grid-cols-4 items-start gap-12 w-full">
-        <div className="flex flex-col gap-4 justify-center">
-          <Link href={"/"} className="group flex items-center gap-1">
-            <Gem
-              size={42}
-              strokeWidth={1.75}
-              className="text-primary group-hover:animate-sparkle transition-all duration-300"
-            />
-            <h1 className="text-lg">Ciscryp</h1>
-          </Link>
-          <p className="text-sm text-muted-foreground">
-            The world’s first and largest digital marketplace for crypto
-            collectibles and non-fungible tokens (NFTs). Buy, sell, and discover
-            exclusive digital items.
-          </p>
-          <div className="pt-4 flex flex-col gap-4">
-            {socialIcons.map((icon, index) => (
+    <div className="w-full xl:fixed xl:bottom-0 border-t z-40">
+      <div className="body-container px-6 py-12 ">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 items-start gap-12 w-full">
+          <div className="flex flex-col gap-4 justify-center">
+            <Link href={"/"} className="group flex items-center gap-1">
+              <Gem
+                size={42}
+                strokeWidth={1.75}
+                className="text-primary group-hover:animate-sparkle transition-all duration-300"
+              />
+              <h1 className="text-lg">Ciscryp</h1>
+            </Link>
+            <p className="text-sm text-muted-foreground">
+              The world’s first and largest digital marketplace for crypto
+              collectibles and non-fungible tokens (NFTs). Buy, sell, and
+              discover exclusive digital items.
+            </p>
+            <div className="pt-4 flex flex-col gap-4">
+              {socialIcons.map((icon, index) => (
+                <Link
+                  href={icon.link}
+                  key={index}
+                  className="flex items-center gap-2 group"
+                >
+                  <span className="text-[18px] text-primary group-hover:scale-110 transition-transform">
+                    {icon.icon}
+                  </span>
+                  <p className="first-letter:uppercase text-sm text-muted-foreground transition-colors duration-200 group-hover:text-primary">
+                    {icon.platform}
+                  </p>
+                </Link>
+              ))}
+            </div>
+          </div>
+          <div className="flex flex-col gap-4">
+            <h3 className="text-lg">Discover</h3>
+            {discover.map((item, index) => (
               <Link
-                href={icon.link}
+                href={`/${item.link}`}
                 key={index}
-                className="flex items-center gap-2 group"
+                className="first-letter:uppercase text-sm text-muted-foreground hover:text-primary transition-colors duration-200"
               >
-                <span className="text-[18px] text-primary group-hover:scale-110 transition-transform">
-                  {icon.icon}
-                </span>
-                <p className="first-letter:uppercase text-sm text-muted-foreground transition-colors duration-200 group-hover:text-primary">
-                  {icon.platform}
-                </p>
+                {item.name}
               </Link>
             ))}
           </div>
-        </div>
-        <div className="flex flex-col gap-4">
-          <h3 className="text-lg">Discover</h3>
-          {discover.map((item, index) => (
-            <Link
-              href={`/${item.link}`}
-              key={index}
-              className="first-letter:uppercase text-sm text-muted-foreground hover:text-primary transition-colors duration-200"
-            >
-              {item.name}
-            </Link>
-          ))}
-        </div>
-        <div className="flex flex-col gap-4">
-          <h3 className="text-lg">Help Center</h3>
-          {helpCenter.map((item, index) => (
-            <Link
-              href={`/${item.link}`}
-              key={index}
-              className="first-letter:uppercase text-sm text-muted-foreground hover:text-primary transition-colors duration-200"
-            >
-              {item.name}
-            </Link>
-          ))}
-        </div>
-        <div className="flex flex-col gap-3">
-          <h3 className="text-lg">Subscribe</h3>
-          <div className="flex w-full items-center gap-2 rounded-lg border p-2 shadow-sm focus-within:ring-2 focus-within:ring-primary transition">
-            <Input
-              type="email"
-              placeholder="Enter your email"
-              className="flex-1 border-none focus:outline-none focus:ring-0 focus-visible:ring-0 bg-transparent"
-            />
-            <Send className="cursor-pointer text-primary hover:scale-110 transition-transform duration-200" />
+          <div className="flex flex-col gap-4">
+            <h3 className="text-lg">Help Center</h3>
+            {helpCenter.map((item, index) => (
+              <Link
+                href={`/${item.link}`}
+                key={index}
+                className="first-letter:uppercase text-sm text-muted-foreground hover:text-primary transition-colors duration-200"
+              >
+                {item.name}
+              </Link>
+            ))}
           </div>
-          <p className="text-xs text-muted-foreground">
-            Discover, collect and sell extraordinary NFTs on Ciscryp. Join the
-            largest NFT marketplace.
-          </p>
+          <div className="flex flex-col gap-3">
+            <h3 className="text-lg">Subscribe</h3>
+            <div className="flex w-full items-center gap-2 rounded-lg border p-2 shadow-sm focus-within:ring-2 focus-within:ring-primary transition">
+              <Input
+                type="email"
+                placeholder="Enter your email"
+                className="flex-1 border-none focus:outline-none focus:ring-0 focus-visible:ring-0 bg-transparent"
+              />
+              <Send className="cursor-pointer text-primary hover:scale-110 transition-transform duration-200" />
+            </div>
+            <p className="text-xs text-muted-foreground">
+              Discover, collect and sell extraordinary NFTs on Ciscryp. Join the
+              largest NFT marketplace.
+            </p>
+          </div>
         </div>
       </div>
     </div>
