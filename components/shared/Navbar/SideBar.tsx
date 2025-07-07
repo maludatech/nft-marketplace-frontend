@@ -111,8 +111,10 @@ export const MobileSidebar = () => {
             <Search className="cursor-pointer text-lg absolute top-3 right-8 text-muted-foreground z-10" />
           </div>
           <Separator className="w-full" />
-          <Discover />
-          <HelpCenter />
+          <div className="flex flex-col gap-6 px-6">
+            <Discover />
+            <HelpCenter />
+          </div>
           <Separator className="w-full" />
           <div className="flex flex-col gap-4">
             <Button className="cursor-pointer rounded-md mx-6">Create</Button>
