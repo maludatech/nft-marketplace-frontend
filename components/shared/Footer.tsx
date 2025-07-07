@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
 import {
   FaFacebookF,
   FaTwitter,
@@ -9,9 +8,8 @@ import {
   FaLinkedinIn,
   FaInstagram,
 } from "react-icons/fa";
-import { useTheme } from "next-themes";
-import image from "@/public/assets/image";
-import { APP_NAME } from "@/lib/constants";
+import { Gem } from "lucide-react";
+import { useThemeColor } from "@/stores/useThemeColor";
 
 interface SocialIcon {
   platform: string;
@@ -20,7 +18,7 @@ interface SocialIcon {
 }
 
 export const Footer = () => {
-  const { theme } = useTheme();
+  const { themeColor } = useThemeColor();
 
   const socialIcons = [
     {
@@ -54,12 +52,14 @@ export const Footer = () => {
     <div className="w-full bottom-0 fixed border-t px-6 py-12">
       <div className="grid grid-cols-2 md:grid-cols-4 xl:grid-cols-5">
         <div className="flex flex-col gap-4 justify-center">
-          <Image
-            src={theme === "dark" ? image.logoLight : image.logo}
-            alt={`${APP_NAME} logo`}
-            width={130}
-            height={130}
-          />
+          <Link href={"/"} className="group flex items-center gap-1">
+            <Gem
+              size={42}
+              strokeWidth={1.75}
+              className="text-primary group-hover:animate-sparkle transition-all duration-300"
+            />
+            <h1 className="text-lg">Ciscryp</h1>
+          </Link>
           <p className="text-sm text-muted-foreground">
             The world’s first and largest digital marketplace for crypto
             collectibles and non-fungible tokens (NFTs). Buy, sell, and discover

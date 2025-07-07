@@ -153,6 +153,9 @@ body.theme-yellow {
   .body-container {
     @apply max-w-screen-xl mx-auto;
   }
+  .animate-sparkle {
+    animation: sparkle 0.6s ease-in-out;
+  }
 }
 
 @layer base {

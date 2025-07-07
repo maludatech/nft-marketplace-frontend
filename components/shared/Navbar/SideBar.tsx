@@ -3,7 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useTheme } from "next-themes";
-import { ChevronDown, Search } from "lucide-react";
+import { ChevronDown, Gem, Search } from "lucide-react";
 import { CgMenuRight } from "react-icons/cg";
 import {
   FaFacebookF,
@@ -80,15 +80,14 @@ export const MobileSidebar = ({
       >
         <SheetTitle className="sr-only"></SheetTitle>
         <div className="flex flex-col gap-6 pt-8">
-          <Link href="/" className="px-6">
-            <Image
-              src={theme === "dark" ? image.logoLight : image.logo}
-              alt={`${APP_NAME} logo`}
-              width={130}
-              height={130}
+          <Link href={"/"} className="flex items-center gap-1 pl-6">
+            <Gem
+              size={42}
+              strokeWidth={1.75}
+              className="text-primary group-hover:animate-sparkle transition-all duration-300"
             />
+            <h1 className="text-lg">Ciscryp</h1>
           </Link>
-
           <div className="text-muted-foreground text-sm pt-2 px-6">
             Explore the best NFT stories and content - then create and share
             your own.
