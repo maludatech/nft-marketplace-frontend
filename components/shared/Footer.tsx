@@ -79,7 +79,7 @@ export const Footer = () => {
   ];
 
   return (
-    <div className="w-full fixed bottom-0 border-t px-6 py-12 z-40">
+    <div className="w-full xl:fixed xl:bottom-0 border-t px-6 py-12 z-40">
       <div className="grid sm:grid-cols-2 lg:grid-cols-4 items-start gap-12 w-full">
         <div className="flex flex-col gap-4 justify-center">
           <Link href={"/"} className="group flex items-center gap-1">
