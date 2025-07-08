@@ -2,8 +2,9 @@
 
 import { useMemo } from "react";
 import Image from "next/image";
-import image from "@/public/assets/image";
+import { useTheme } from "next-themes";
 import Autoplay from "embla-carousel-autoplay";
+import { MdVerified } from "react-icons/md";
 import {
   Carousel,
   CarouselContent,
@@ -11,99 +12,162 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
+import image from "@/public/assets/image";
+
+const slides = [
+  {
+    title: "Hello NFT",
+    id: 1,
+    creator: "Daulat Hussain",
+    collection: "GYm",
+    price: "00664 ETH",
+    like: 243,
+    image: image.user1,
+    nftImage: image.nft_image_1,
+    time: {
+      days: 21,
+      hours: 40,
+      minutes: 81,
+      seconds: 15,
+    },
+  },
+  {
+    title: "Buddy NFT",
+    id: 2,
+    creator: "Shoaib Hussain",
+    collection: "Home",
+    price: "0000004 ETH",
+    like: 243,
+    image: image.user2,
+    nftImage: image.nft_image_2,
+    time: {
+      days: 77,
+      hours: 11,
+      minutes: 21,
+      seconds: 45,
+    },
+  },
+  {
+    title: "Gym NFT",
+    id: 3,
+    creator: "Raayan Hussain",
+    collection: "GYm",
+    price: "0000064 ETH",
+    like: 243,
+    image: image.user3,
+    nftImage: image.nft_image_3,
+    time: {
+      days: 37,
+      hours: 20,
+      minutes: 11,
+      seconds: 55,
+    },
+  },
+  {
+    title: "Home NFT",
+    id: 4,
+    creator: "Raayan Hussain",
+    collection: "GYm",
+    price: "4664 ETH",
+    like: 243,
+    image: image.user4,
+    nftImage: image.nft_image_1,
+    time: {
+      days: 87,
+      hours: 29,
+      minutes: 10,
+      seconds: 15,
+    },
+  },
+];
 
 export const NFTSlider = () => {
-  const plugin = useMemo(
-    () => Autoplay({ delay: 3000, stopOnInteraction: true }),
+  const autoplay = useMemo(
+    () => Autoplay({ delay: 4000, stopOnInteraction: true }),
     []
   );
 
-  const sliderData = [
-    {
-      title: "Hello NFT",
-      id: 1,
-      name: "Daulat Hussain",
-      collection: "GYm",
-      price: "0.0664 ETH",
-      like: 243,
-      image: image.user1,
-      nftImage: image.nft_image_1,
-    },
-    {
-      title: "Buddy NFT",
-      id: 2,
-      name: "Shoaib Hussain",
-      collection: "Home",
-      price: "0.000004 ETH",
-      like: 128,
-      image: image.user2,
-      nftImage: image.nft_image_2,
-    },
-    {
-      title: "Gym NFT",
-      id: 3,
-      name: "Raayan Hussain",
-      collection: "GYm",
-      price: "0.000064 ETH",
-      like: 317,
-      image: image.user3,
-      nftImage: image.nft_image_3,
-    },
-    {
-      title: "Home NFT",
-      id: 4,
-      name: "Raayan Hussain",
-      collection: "GYm",
-      price: "4.664 ETH",
-      like: 219,
-      image: image.user4,
-      nftImage: image.nft_image_1,
-    },
-  ];
+  const { theme } = useTheme();
+
+  const shadow =
+    theme === "dark"
+      ? "0 10px 30px rgba(255,255,255,0.1)"
+      : "0 10px 30px rgba(0,0,0,0.08)";
 
   return (
-    <section className="w-full min-h-[50vh] py-20">
-      <div className="body-container px-6 md:px-12">
+    <section className="relative w-full overflow-hidden">
+      <div className="body-container pt-36 pb-12 px-6 md:px-12">
+        <h2 className="mb-12 text-3xl font-bold">Explore Hot NFTs</h2>
         <Carousel
-          plugins={[plugin]}
-          className="w-full"
-          onMouseEnter={plugin.stop}
-          onMouseLeave={plugin.reset}
+          plugins={[autoplay]}
+          onMouseEnter={autoplay.stop}
+          onMouseLeave={autoplay.reset}
+          className="relative"
         >
-          <CarouselContent>
-            {sliderData.map((data) => (
-              <CarouselItem key={data.id} className="p-4">
-                <div className="flex flex-col md:flex-row gap-8 items-center">
-                  {/* Text Section */}
-                  <div className="md:w-1/2 space-y-4">
-                    <h2 className="text-3xl font-bold">{data.title}</h2>
-                    <p className="text-muted-foreground">
-                      Created by{" "}
-                      <span className="font-semibold">{data.name}</span>
-                    </p>
-                    <p className="text-lg">Price: {data.price}</p>
-                    <p className="text-sm text-muted-foreground">
-                      Collection: {data.collection}
-                    </p>
+          <CarouselContent className="gap-6">
+            {slides.map((s) => (
+              <CarouselItem key={s.id} className="w-[300px]">
+                <div
+                  className="flex flex-col-reverse md:flex-row"
+                  style={{ boxShadow: shadow }}
+                >
+                  <div className="w-full flex flex-col border h-fit bg-accent/20 rounded-2xl gap-4 md:w-1/2 p-10">
+                    <h3 className="text-3xl font-semibold">{s.title}</h3>
+                    <div className="flex flex-col sm:flex-row w-full sm:items-center gap-6 pt-4">
+                      <div className="flex gap-2 items-center">
+                        <Image
+                          src={s.image}
+                          alt="user"
+                          width={50}
+                          height={50}
+                          className="object-cover rounded-full"
+                        />
+                        <div className="flex flex-col gap-1">
+                          <p className="text-sm text-muted-foreground">
+                            Creator
+                          </p>
+                          <div className="flex gap-1 items-center">
+                            <h3 className="text-sm font-semibold">
+                              {s.creator}
+                            </h3>
+                            <MdVerified className="text-primary text-lg" />
+                          </div>
+                        </div>
+                      </div>
+                      <div className="flex gap-2 items-center">
+                        <Image
+                          src={image.collection}
+                          alt="user"
+                          width={50}
+                          height={50}
+                          className="object-cover rounded-full"
+                        />
+                        <div className="flex flex-col gap-1">
+                          <p className="text-sm text-muted-foreground">
+                            Collection
+                          </p>
+                          <h3 className="text-sm font-semibold">
+                            {s.collection}
+                          </h3>
+                        </div>
+                      </div>
+                    </div>
                   </div>
-
-                  {/* Image Section */}
-                  <div className="md:w-1/2">
+                  <div className="w-full rounded-2xl bg-accent border-accent border-8 md:w-1/2">
                     <Image
-                      src={data.nftImage}
-                      alt={data.title}
-                      width={500}
-                      height={500}
-                      className="rounded-lg shadow-lg object-cover w-full h-auto"
+                      src={s.nftImage}
+                      alt={s.title}
+                      width={600}
+                      height={600}
+                      className="object-cover rounded-2xl"
                     />
                   </div>
                 </div>
               </CarouselItem>
             ))}
           </CarouselContent>
-
-          <CarouselPrevious className="left-0 md:left-6" />
-          <CarouselNext className="right-0 md:right-6" />
+          <CarouselPrevious className="absolute top-1/2 left-0 -translate-y-1/2 bg-background/50 hover:bg-background p-2 rounded-full cursor-pointer" />
+          <CarouselNext className="absolute top-1/2 right-0 -translate-y-1/2 bg-background/50 hover:bg-background p-2 rounded-full cursor-pointer" />
         </Carousel>
       </div>
     </section>

@@ -26,7 +26,7 @@ export const Services = () => {
   ];
   return (
     <section className="w-full min-h-1/2">
-      <div className="body-container pt-36 px-12 grid sm:grid-cols-2 lg:grid-cols-4 place-items-start gap-16 sm:gap-8 w-full">
+      <div className="body-container pt-36 px-6 md:px-12 grid sm:grid-cols-2 lg:grid-cols-4 place-items-start gap-16 sm:gap-8 w-full">
         {services.map((service, index) => (
           <div
             className="flex flex-col gap-4 justify-center items-center w-full"
