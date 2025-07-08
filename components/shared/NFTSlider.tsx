@@ -5,7 +5,7 @@ import Image from "next/image";
 import { useTheme } from "next-themes";
 import Autoplay from "embla-carousel-autoplay";
 import { MdVerified } from "react-icons/md";
-import { Timer } from "lucide-react";
+import { Timer, Heart } from "lucide-react";
 import {
   Carousel,
   CarouselContent,
@@ -126,6 +126,22 @@ export const NFTSlider = () => {
   const [timeLeft, setTimeLeft] = useState(
     slides.map((s) => convertToSeconds(s.time))
   );
+  const [likes, setLikes] = useState(slides.map((s) => s.like));
+  const [liked, setLiked] = useState(slides.map(() => false));
+
+  const toggleLike = (index: number) => {
+    setLiked((prev) => {
+      const updated = [...prev];
+      updated[index] = !updated[index];
+      return updated;
+    });
+
+    setLikes((prev) => {
+      const updated = [...prev];
+      updated[index] = liked[index] ? prev[index] - 1 : prev[index] + 1;
+      return updated;
+    });
+  };
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -267,9 +283,25 @@ export const NFTSlider = () => {
                     </div>
 
                     <div
-                      className="w-full h-full rounded-2xl flex items-center justify-center rounded-t-2xl lg:rounded-r-2xl lg:rounded-l-none bg-accent/20 border-accent/20 border-8 lg:w-1/2"
+                      className="w-full relative h-full rounded-2xl flex items-center justify-center rounded-t-2xl lg:rounded-r-2xl lg:rounded-l-none bg-accent/20 border-accent/20 border-8 lg:w-1/2"
                       style={{ boxShadow: shadow }}
                     >
+                      <button
+                        className="absolute top-4 right-4 z-20 cursor-pointer flex flex-col items-center justify-center bg-background/50 hover:bg-background p-2 rounded-full"
+                        onClick={() => toggleLike(idx)}
+                      >
+                        <Heart
+                          className={`w-7 h-7 ${
+                            liked[idx]
+                              ? "fill-red-500 text-red-500"
+                              : "text-muted-foreground"
+                          }`}
+                        />
+                        <span className="text-xs text-muted-foreground">
+                          {likes[idx]}
+                        </span>
+                      </button>
+
                       <Image
                         src={s.nftImage}
                         alt={s.title}
