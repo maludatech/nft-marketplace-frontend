@@ -1,10 +1,11 @@
 "use client";
 
-import { useMemo } from "react";
+import { useEffect, useMemo, useState } from "react";
 import Image from "next/image";
 import { useTheme } from "next-themes";
 import Autoplay from "embla-carousel-autoplay";
 import { MdVerified } from "react-icons/md";
+import { Timer } from "lucide-react";
 import {
   Carousel,
   CarouselContent,
@@ -13,6 +14,7 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import image from "@/public/assets/image";
+import { Separator } from "../ui/separator";
 
 const slides = [
   {
@@ -81,18 +83,55 @@ const slides = [
   },
 ];
 
+// Normalize overflowed time (e.g. 81 minutes => 1h 21m)
+function convertToSeconds(t: {
+  days: number;
+  hours: number;
+  minutes: number;
+  seconds: number;
+}) {
+  const totalMinutes = t.hours * 60 + t.minutes;
+  const totalHours = Math.floor(totalMinutes / 60) + t.days * 24;
+  const minutes = totalMinutes % 60;
+
+  const totalSeconds =
+    Math.floor(totalHours / 24) * 86400 +
+    (totalHours % 24) * 3600 +
+    minutes * 60 +
+    t.seconds;
+
+  return totalSeconds;
+}
+
+function convertFromSeconds(total: number) {
+  const days = Math.floor(total / 86400);
+  const hours = Math.floor((total % 86400) / 3600);
+  const minutes = Math.floor((total % 3600) / 60);
+  const seconds = total % 60;
+  return { days, hours, minutes, seconds };
+}
+
 export const NFTSlider = () => {
   const autoplay = useMemo(
     () => Autoplay({ delay: 4000, stopOnInteraction: true }),
     []
   );
-
   const { theme } = useTheme();
-
   const shadow =
     theme === "dark"
       ? "0 10px 30px rgba(255,255,255,0.1)"
       : "0 10px 30px rgba(0,0,0,0.08)";
+
+  const [timeLeft, setTimeLeft] = useState(
+    slides.map((s) => convertToSeconds(s.time))
+  );
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setTimeLeft((prev) => prev.map((t) => (t > 0 ? t - 1 : 0)));
+    }, 1000);
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <section className="relative w-full overflow-hidden">
@@ -105,66 +144,126 @@ export const NFTSlider = () => {
           className="relative"
         >
           <CarouselContent className="gap-6">
-            {slides.map((s) => (
-              <CarouselItem key={s.id} className="w-[300px]">
-                <div
-                  className="flex flex-col-reverse md:flex-row"
-                  style={{ boxShadow: shadow }}
-                >
-                  <div className="w-full flex flex-col border h-fit bg-accent/20 rounded-2xl gap-4 md:w-1/2 p-10">
-                    <h3 className="text-3xl font-semibold">{s.title}</h3>
-                    <div className="flex flex-col sm:flex-row w-full sm:items-center gap-6 pt-4">
-                      <div className="flex gap-2 items-center">
-                        <Image
-                          src={s.image}
-                          alt="user"
-                          width={50}
-                          height={50}
-                          className="object-cover rounded-full"
-                        />
-                        <div className="flex flex-col gap-1">
-                          <p className="text-sm text-muted-foreground">
-                            Creator
-                          </p>
-                          <div className="flex gap-1 items-center">
+            {slides.map((s, idx) => {
+              const countdown = convertFromSeconds(Number(timeLeft[idx]) || 0);
+              return (
+                <CarouselItem key={s.id} className="w-[300px]">
+                  <div className="flex flex-col-reverse lg:flex-row w-full">
+                    <div
+                      className="w-full flex flex-col border h-fit bg-accent/20 rounded-2xl gap-4 lg:w-1/2 p-10"
+                      style={{ boxShadow: shadow }}
+                    >
+                      <h3 className="text-3xl font-semibold">{s.title}</h3>
+                      <div className="flex flex-col sm:flex-row w-full sm:items-center gap-6 pt-4">
+                        <div className="flex gap-2 items-center">
+                          <Image
+                            src={s.image}
+                            alt="user"
+                            width={50}
+                            height={50}
+                            className="object-cover rounded-full"
+                          />
+                          <div className="flex flex-col gap-1">
+                            <p className="text-sm text-muted-foreground">
+                              Creator
+                            </p>
+                            <div className="flex gap-1 items-center">
+                              <h3 className="text-sm font-semibold">
+                                {s.creator}
+                              </h3>
+                              <MdVerified className="text-primary text-lg" />
+                            </div>
+                          </div>
+                        </div>
+                        <div className="flex gap-2 items-center">
+                          <Image
+                            src={image.collection}
+                            alt="collection"
+                            width={50}
+                            height={50}
+                            className="object-cover rounded-full"
+                          />
+                          <div className="flex flex-col gap-1">
+                            <p className="text-sm text-muted-foreground">
+                              Collection
+                            </p>
                             <h3 className="text-sm font-semibold">
-                              {s.creator}
+                              {s.collection}
                             </h3>
-                            <MdVerified className="text-primary text-lg" />
                           </div>
                         </div>
                       </div>
-                      <div className="flex gap-2 items-center">
-                        <Image
-                          src={image.collection}
-                          alt="user"
-                          width={50}
-                          height={50}
-                          className="object-cover rounded-full"
-                        />
-                        <div className="flex flex-col gap-1">
-                          <p className="text-sm text-muted-foreground">
-                            Collection
+                      <div className="w-full relative mt-10">
+                        <p className="absolute -top-3 left-5 bg-background px-2 text-sm text-muted-foreground z-20">
+                          Current Bid
+                        </p>
+                        <div className="w-full flex flex-col gap-2 lg:flex-row border-2 border-primary rounded-md p-6 lg:items-center">
+                          <p className="text-primary text-4xl font-semibold">
+                            {s.price}
                           </p>
-                          <h3 className="text-sm font-semibold">
-                            {s.collection}
-                          </h3>
+                          <span className="text-sm text-muted-foreground">
+                            (≈ $3,221.22)
+                          </span>
                         </div>
                       </div>
+                      <div className="w-full flex flex-col gap-2">
+                        <div className="flex flex-row gap-1 items-center text-muted-foreground text-[16px]">
+                          <Timer />
+                          <p>Auction ending in:</p>
+                        </div>
+                        <div className="grid place-items-start w-full grid-cols-4 pt-4">
+                          <div className="flex flex-col gap-2 text-center">
+                            <h2 className="text-4xl font-semibold">
+                              {countdown.days}
+                            </h2>
+                            <span className="text-muted-foreground text-lg">
+                              Days
+                            </span>
+                          </div>
+                          <div className="flex flex-col gap-2 text-center">
+                            <h2 className="text-4xl font-semibold">
+                              {countdown.hours}
+                            </h2>
+                            <span className="text-muted-foreground text-lg">
+                              hours
+                            </span>
+                          </div>
+                          <div className="flex flex-col gap-2 text-center">
+                            <h2 className="text-4xl font-semibold">
+                              {countdown.minutes}
+                            </h2>
+                            <span className="text-muted-foreground text-lg">
+                              mins
+                            </span>
+                          </div>
+                          <div className="flex flex-col gap-2 text-center">
+                            <h2 className="text-4xl font-semibold">
+                              {countdown.seconds}
+                            </h2>
+                            <span className="text-muted-foreground/50 text-lg">
+                              secs
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                      <Separator />
+                    </div>
+                    <div
+                      className="w-full rounded-2xl flex items-center justify-center bg-accent border-accent border-8 lg:w-1/2"
+                      style={{ boxShadow: shadow }}
+                    >
+                      <Image
+                        src={s.nftImage}
+                        alt={s.title}
+                        width={600}
+                        height={600}
+                        className="object-cover rounded-2xl"
+                      />
                     </div>
                   </div>
-                  <div className="w-full rounded-2xl bg-accent border-accent border-8 md:w-1/2">
-                    <Image
-                      src={s.nftImage}
-                      alt={s.title}
-                      width={600}
-                      height={600}
-                      className="object-cover rounded-2xl"
-                    />
-                  </div>
-                </div>
-              </CarouselItem>
-            ))}
+                </CarouselItem>
+              );
+            })}
           </CarouselContent>
           <CarouselPrevious className="absolute top-1/2 left-0 -translate-y-1/2 bg-background/50 hover:bg-background p-2 rounded-full cursor-pointer" />
           <CarouselNext className="absolute top-1/2 right-0 -translate-y-1/2 bg-background/50 hover:bg-background p-2 rounded-full cursor-pointer" />
