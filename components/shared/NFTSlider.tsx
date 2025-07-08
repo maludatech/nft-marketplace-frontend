@@ -15,6 +15,7 @@ import {
 } from "@/components/ui/carousel";
 import image from "@/public/assets/image";
 import { Separator } from "../ui/separator";
+import { Button } from "../ui/button";
 
 const slides = [
   {
@@ -148,12 +149,13 @@ export const NFTSlider = () => {
               const countdown = convertFromSeconds(Number(timeLeft[idx]) || 0);
               return (
                 <CarouselItem key={s.id} className="w-[300px]">
-                  <div className="flex flex-col-reverse lg:flex-row w-full">
+                  <div className="flex flex-col-reverse lg:flex-row w-full h-full min-h-[600px]">
                     <div
-                      className="w-full flex flex-col border h-fit bg-accent/20 rounded-2xl gap-4 lg:w-1/2 p-10"
+                      className="w-full flex flex-col h-full bg-accent/20 rounded-b-2xl border-b border-x lg:border-l lg:border-y lg:rounded-l-2xl lg:rounded-r-none gap-4 lg:w-1/2 p-10"
                       style={{ boxShadow: shadow }}
                     >
                       <h3 className="text-3xl font-semibold">{s.title}</h3>
+
                       <div className="flex flex-col sm:flex-row w-full sm:items-center gap-6 pt-4">
                         <div className="flex gap-2 items-center">
                           <Image
@@ -193,6 +195,7 @@ export const NFTSlider = () => {
                           </div>
                         </div>
                       </div>
+
                       <div className="w-full relative mt-10">
                         <p className="absolute -top-3 left-5 bg-background px-2 text-sm text-muted-foreground z-20">
                           Current Bid
@@ -206,6 +209,7 @@ export const NFTSlider = () => {
                           </span>
                         </div>
                       </div>
+
                       <div className="w-full flex flex-col gap-2">
                         <div className="flex flex-row gap-1 items-center text-muted-foreground text-[16px]">
                           <Timer />
@@ -246,18 +250,32 @@ export const NFTSlider = () => {
                           </div>
                         </div>
                       </div>
-                      <Separator />
+
+                      <Separator className="h-4" />
+
+                      <div className="flex flex-col sm:flex-row w-full sm:items-center gap-6 pt-4">
+                        <Button className="rounded-full w-full sm:w-1/2 py-6 px-3 text-lg cursor-pointer">
+                          Place a bid
+                        </Button>
+                        <Button
+                          variant={"outline"}
+                          className="rounded-full w-full sm:w-1/2 py-6 px-3 text-lg cursor-pointer"
+                        >
+                          View Item
+                        </Button>
+                      </div>
                     </div>
+
                     <div
-                      className="w-full rounded-2xl flex items-center justify-center bg-accent border-accent border-8 lg:w-1/2"
+                      className="w-full h-full rounded-2xl flex items-center justify-center rounded-t-2xl lg:rounded-r-2xl lg:rounded-l-none bg-accent/20 border-accent/20 border-8 lg:w-1/2"
                       style={{ boxShadow: shadow }}
                     >
                       <Image
                         src={s.nftImage}
                         alt={s.title}
-                        width={600}
-                        height={600}
-                        className="object-cover rounded-2xl"
+                        width={800}
+                        height={800}
+                        className="object-cover rounded-2xl h-full"
                       />
                     </div>
                   </div>
