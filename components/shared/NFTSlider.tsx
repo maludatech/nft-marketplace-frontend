@@ -287,7 +287,7 @@ export const NFTSlider = () => {
                       style={{ boxShadow: shadow }}
                     >
                       <button
-                        className="absolute top-4 right-4 z-20 cursor-pointer flex flex-col items-center justify-center bg-background/50 hover:bg-background p-2 rounded-full"
+                        className="absolute top-4 right-4 z-20 cursor-pointer flex items-center gap-1 justify-center bg-background/50 hover:bg-background p-2 rounded-full"
                         onClick={() => toggleLike(idx)}
                       >
                         <Heart
