@@ -5,7 +5,7 @@ import { Toaster } from "@/components/ui/sonner";
 import { Footer } from "@/components/shared/Footer";
 import { Main } from "@/components/shared/Navbar/Main";
 import { ClientThemeProvider } from "@/components/shared/ClientThemeProvider";
-import { useThemeColor } from "@/stores/useThemeColor";
+import { ThemeWrapper } from "@/components/shared/ThemeWrapper";
 
 export const metadata: Metadata = {
   title: {
@@ -42,17 +42,16 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const themeColor = useThemeColor.getState().themeColor;
   return (
     <html lang="en">
-      <body className={`antialiased ${themeColor}`}>
+      <ThemeWrapper>
         <ClientThemeProvider>
           <Main />
           {children}
           <Toaster richColors />
           <Footer />
         </ClientThemeProvider>
-      </body>
+      </ThemeWrapper>
     </html>
   );
 }
