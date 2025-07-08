@@ -39,7 +39,7 @@ export const Services = () => {
               height={100}
               className="object-contain"
             />
-            <div className="bg-primary/50 rounded-full px-4 py-2 text-white font-semibold">
+            <div className="bg-primary rounded-full px-4 py-2 text-white font-semibold">
               Step {index + 1}
             </div>
             <h1 className="font-bold">{service.title}</h1>
