@@ -9,7 +9,6 @@ import {
   FaMusic,
   FaVideo,
   FaImages,
-  FaUserAlt,
 } from "react-icons/fa";
 import { AiFillCloseCircle } from "react-icons/ai";
 import { MdVerified } from "react-icons/md";
@@ -109,7 +108,13 @@ const Filter: React.FC = () => {
                         : "text-foreground border-foreground"
                     }`}
                   >
-                    {item.icon}
+                    <span
+                      className={`${
+                        item.name == "Verified" && "text-blue-500"
+                      }`}
+                    >
+                      {item.icon}
+                    </span>
                     <span>{item.name}</span>
                     {item.active ? <AiFillCloseCircle /> : <TiTick />}
                   </div>
