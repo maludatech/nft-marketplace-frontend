@@ -59,7 +59,7 @@ export const DaysComponent = () => {
             />
             <div className="flex items-center gap-1 text-sm">
               <span className="text-gray-700 dark:text-gray-300">
-                Shoaib Bhai
+                Maludatech
               </span>
               <MdVerified className="text-blue-500 text-lg" />
             </div>

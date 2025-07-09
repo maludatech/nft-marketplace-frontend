@@ -60,7 +60,7 @@ const Filter: React.FC = () => {
 
   return (
     <div className="w-full">
-      <div className="body-container w-full pt-16 px-6 md:px-12 flex flex-col gap-4">
+      <div className="body-container w-full pt-36 px-6 md:px-12 flex flex-col gap-4">
         {/* Filter Buttons */}
         <div className="w-full flex justify-between items-center flex-col md:flex-row gap-6">
           <div className="flex flex-wrap md:flex-nowrap gap-4 md:gap-8">

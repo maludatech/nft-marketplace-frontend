@@ -5,7 +5,8 @@ import { EmailSubscriptionForm } from "@/components/shared/EmailSubscriptionForm
 import { Category } from "@/components/shared/Category";
 import Filter from "@/components/shared/Filter";
 import NFTCard from "@/components/shared/NFTCard";
-import Collection from "@/components/shared/collection";
+import Collection from "@/components/shared/Collection";
+import { AudioLive } from "@/components/shared/AudioLive";
 
 export default function Home() {
   return (
@@ -13,6 +14,7 @@ export default function Home() {
       <HeroSection />
       <Services />
       <NFTSlider />
+      <AudioLive />
       <Collection />
       <Filter />
       <NFTCard />
