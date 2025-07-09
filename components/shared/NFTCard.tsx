@@ -136,7 +136,7 @@ const NFTCard = () => {
             {/* Like Button */}
             <div
               onClick={() => toggleLike(index)}
-              className="absolute top-4 left-4 bg-primary text-white px-3 py-1 rounded-full flex items-center gap-2 text-lg cursor-pointer z-10"
+              className="absolute top-5 left-5 z-20 cursor-pointer flex items-center gap-1 justify-center bg-background/50 hover:bg-background p-2 rounded-full"
             >
               {item.liked ? (
                 <AiFillHeart className="text-red-500" />
@@ -179,7 +179,7 @@ const NFTCard = () => {
               </div>
 
               {/* Category Icon */}
-              <div className="text-primary text-xl">
+              <div className="text-muted-foreground text-xl mr-2 mb-2">
                 <BsImages />
               </div>
             </div>
