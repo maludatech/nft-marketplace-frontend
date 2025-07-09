@@ -6,7 +6,23 @@ import { BsImages } from "react-icons/bs";
 import Image from "next/image";
 import image from "@/public/assets/image";
 
-const featuredItems = [
+type RemainingTime = {
+  hours: number;
+  mins: number;
+  secs: number;
+};
+
+type NFTItem = {
+  image: any;
+  NFTTag: string;
+  price: string;
+  inStock: number;
+  remainingTime: RemainingTime;
+  likes: number;
+  liked?: boolean;
+};
+
+const initialNFTs: NFTItem[] = [
   {
     image: image.nft_image_1,
     NFTTag: "CloneF#1791",
@@ -82,22 +98,36 @@ const featuredItems = [
 ];
 
 const NFTCard = () => {
-  const [like, setLike] = useState<boolean>(false);
+  const [items, setItems] = useState<NFTItem[]>(
+    initialNFTs.map((item) => ({ ...item, liked: false }))
+  );
 
-  const toggleLike = () => setLike((prev) => !prev);
+  const toggleLike = (index: number) => {
+    setItems((prev) =>
+      prev.map((item, i) =>
+        i === index
+          ? {
+              ...item,
+              liked: !item.liked,
+              likes: item.liked ? item.likes - 1 : item.likes + 1,
+            }
+          : item
+      )
+    );
+  };
 
   return (
     <div className="w-full">
       <div className="body-container w-full pt-8 px-6 md:px-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12">
-        {featuredItems.map((item, index) => (
+        {items.map((item, index) => (
           <div
             key={index}
             className="relative bg-muted/30 p-4 rounded-xl cursor-pointer transition duration-300 hover:shadow-xl"
           >
-            {/* Image */}
+            {/* NFT Image */}
             <Image
               src={item.image}
-              alt="NFT Image"
+              alt="NFT"
               width={600}
               height={600}
               className="rounded-xl transition-transform duration-300 hover:scale-105"
@@ -105,10 +135,10 @@ const NFTCard = () => {
 
             {/* Like Button */}
             <div
+              onClick={() => toggleLike(index)}
               className="absolute top-4 left-4 bg-primary text-white px-3 py-1 rounded-full flex items-center gap-2 text-lg cursor-pointer z-10"
-              onClick={toggleLike}
             >
-              {like ? (
+              {item.liked ? (
                 <AiFillHeart className="text-red-500" />
               ) : (
                 <AiOutlineHeart />
@@ -116,7 +146,7 @@ const NFTCard = () => {
               {item.likes}
             </div>
 
-            {/* Time Remaining */}
+            {/* Countdown */}
             <div className="absolute top-4 right-4 bg-muted skew-x-12 rounded-bl-xl px-6 py-1 text-center">
               <div className="-skew-x-12">
                 <small className="text-sm">Remaining time</small>
@@ -127,9 +157,8 @@ const NFTCard = () => {
               </div>
             </div>
 
-            {/* Bottom Info */}
+            {/* Bottom Card Details */}
             <div className="absolute bottom-0 left-0 w-full flex items-end justify-between px-4 pb-4">
-              {/* Left */}
               <div className="relative">
                 <div className="bg-muted skew-x-12 rounded-tr-xl">
                   <div className="-skew-x-12 px-6 py-2">
@@ -149,7 +178,7 @@ const NFTCard = () => {
                 </div>
               </div>
 
-              {/* Right */}
+              {/* Category Icon */}
               <div className="text-primary text-xl">
                 <BsImages />
               </div>
