@@ -29,7 +29,7 @@ const TABS = [
   },
 ];
 
-export const Collection = () => {
+export const TopCollection = () => {
   const [activeTab, setActiveTab] = useState("popular");
 
   const currentData = TABS.find((tab) => tab.key === activeTab)?.data || [];
