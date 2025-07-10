@@ -6,6 +6,7 @@ import { Category } from "@/components/shared/Category";
 import Filter from "@/components/shared/Filter";
 import NFTCard from "@/components/shared/NFTCard";
 import { TopCollection } from "@/components/shared/TopCollection";
+import FollowerTab from "@/components/shared/FollowerTab";
 
 export default function Home() {
   return (
@@ -13,6 +14,7 @@ export default function Home() {
       <HeroSection />
       <Services />
       <NFTSlider />
+      <FollowerTab />
       <TopCollection />
       <Filter />
       <NFTCard />

@@ -21,7 +21,7 @@ const slides = [
   {
     title: "Hello NFT",
     id: 1,
-    creator: "Daulat Hussain",
+    creator: "Maluda Tech",
     collection: "GYm",
     price: "00664 ETH",
     like: 243,
@@ -37,7 +37,7 @@ const slides = [
   {
     title: "Buddy NFT",
     id: 2,
-    creator: "Shoaib Hussain",
+    creator: "Juliet Macp",
     collection: "Home",
     price: "0000004 ETH",
     like: 243,
@@ -53,7 +53,7 @@ const slides = [
   {
     title: "Gym NFT",
     id: 3,
-    creator: "Raayan Hussain",
+    creator: "Giada Mann",
     collection: "GYm",
     price: "0000064 ETH",
     like: 243,
@@ -69,7 +69,7 @@ const slides = [
   {
     title: "Home NFT",
     id: 4,
-    creator: "Raayan Hussain",
+    creator: "Karli Costa",
     collection: "GYm",
     price: "4664 ETH",
     like: 243,
