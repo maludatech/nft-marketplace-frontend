@@ -2,7 +2,6 @@
 
 import { useEffect, useMemo, useState } from "react";
 import Image from "next/image";
-import { useTheme } from "next-themes";
 import Autoplay from "embla-carousel-autoplay";
 import { MdVerified } from "react-icons/md";
 import { Timer, Heart } from "lucide-react";
@@ -16,6 +15,7 @@ import {
 import image from "@/public/assets/image";
 import { Separator } from "../ui/separator";
 import { Button } from "../ui/button";
+import { Card } from "../ui/card";
 
 const slides = [
   {
@@ -117,11 +117,6 @@ export const NFTSlider = () => {
     () => Autoplay({ delay: 4000, stopOnInteraction: true }),
     []
   );
-  const { theme } = useTheme();
-  const shadow =
-    theme === "dark"
-      ? "0 10px 30px rgba(255,255,255,0.1)"
-      : "0 10px 30px rgba(0,0,0,0.08)";
 
   const [timeLeft, setTimeLeft] = useState(
     slides.map((s) => convertToSeconds(s.time))
@@ -165,13 +160,9 @@ export const NFTSlider = () => {
               const countdown = convertFromSeconds(Number(timeLeft[idx]) || 0);
               return (
                 <CarouselItem key={s.id} className="w-[300px]">
-                  <div className="flex flex-col-reverse lg:flex-row w-full h-full min-h-[600px]">
-                    <div
-                      className="w-full flex flex-col h-full bg-accent/20 rounded-b-2xl border-b border-x lg:border-l lg:border-y lg:rounded-l-2xl lg:rounded-r-none gap-4 lg:w-1/2 p-10"
-                      style={{ boxShadow: shadow }}
-                    >
+                  <Card className="flex flex-col-reverse lg:flex-row w-full h-full min-h-[600px] py-0 gap-6">
+                    <div className="w-full flex flex-col h-full gap-4 lg:w-1/2 p-6">
                       <h3 className="text-3xl font-semibold">{s.title}</h3>
-
                       <div className="flex flex-col sm:flex-row w-full sm:items-center gap-6 pt-4">
                         <div className="flex gap-2 items-center">
                           <Image
@@ -282,10 +273,7 @@ export const NFTSlider = () => {
                       </div>
                     </div>
 
-                    <div
-                      className="w-full relative h-full rounded-2xl flex items-center justify-center rounded-t-2xl lg:rounded-r-2xl lg:rounded-l-none bg-accent/20 border-accent/20 border-8 lg:w-1/2"
-                      style={{ boxShadow: shadow }}
-                    >
+                    <div className="w-full relative h-full flex items-center justify-center lg:w-1/2">
                       <button
                         className="absolute top-4 right-4 z-20 cursor-pointer flex items-center gap-1 justify-center bg-background/50 hover:bg-background p-2 rounded-full"
                         onClick={() => toggleLike(idx)}
@@ -307,10 +295,10 @@ export const NFTSlider = () => {
                         alt={s.title}
                         width={800}
                         height={800}
-                        className="object-cover rounded-2xl h-full"
+                        className="object-cover h-full rounded-t-xl lg:rounded-t-none lg:rounded-r-xl"
                       />
                     </div>
-                  </div>
+                  </Card>
                 </CarouselItem>
               );
             })}
