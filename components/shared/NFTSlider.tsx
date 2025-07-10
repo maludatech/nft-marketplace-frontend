@@ -146,8 +146,8 @@ export const NFTSlider = () => {
   }, []);
 
   return (
-    <section className="relative w-full overflow-hidden">
-      <div className="body-container pt-36 px-6 md:px-12">
+    <section className="w-full pt-36 px-6 md:px-12 overflow-hidden">
+      <div className="body-container relative">
         <h2 className="mb-12 text-3xl font-bold">Explore Hot NFTs</h2>
         <Carousel
           plugins={[autoplay]}

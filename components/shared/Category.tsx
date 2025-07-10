@@ -60,8 +60,8 @@ export const Category = () => {
   );
 
   return (
-    <section className="w-full">
-      <div className="body-container pt-36 px-6 md:px-12 flex flex-col gap-4">
+    <section className="w-full pt-36 px-6 md:px-12">
+      <div className="body-container flex flex-col gap-4">
         <h2 className="text-3xl font-bold">Browse by category</h2>
         <p className="text-lg text-muted-foreground">
           Explore the NFTs in the most featured categories.

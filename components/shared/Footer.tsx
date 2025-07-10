@@ -79,8 +79,8 @@ export const Footer = () => {
   ];
 
   return (
-    <footer className="w-full bg-background min-h-1/2 border-t z-40">
-      <div className="body-container px-6 md:px-12 py-12 ">
+    <footer className="w-full min-h-1/2 px-6 md:px-12 py-12 border-t z-40">
+      <div className="body-container">
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 items-start gap-12 w-full">
           <div className="flex flex-col gap-4 justify-center">
             <Link

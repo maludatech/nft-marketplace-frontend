@@ -90,11 +90,11 @@ const FollowerTab: React.FC = () => {
     <div className="w-full pt-36 px-6 md:px-12">
       {/* Title & Tabs */}
       <div className="body-container w-full flex flex-col gap-4">
-        <div className="flex flex-col md:flex-row justify-between items-center mb-6 gap-4">
-          <h2 className="text-3xl font-bold text-center pb-4 md:pb-0">
-            Top List Creators.
-          </h2>
-          <div className="flex gap-3">
+        <h2 className="text-3xl font-bold text-center pb-2">
+          Top List Creators.
+        </h2>
+        <div className="flex flex-col md:flex-row justify-center items-center gap-4">
+          <div className="flex gap-3 overflow-x-auto scrollbar-thin scrollbar-thumb-muted scrollbar-track-background p-2 sm:p-4">
             {tabs.map((tab) => (
               <button
                 key={tab.id}
@@ -110,6 +110,13 @@ const FollowerTab: React.FC = () => {
             ))}
           </div>
         </div>
+
+        {/* 
+          <div className="flex gap-3 overflow-x-auto scrollbar-thin scrollbar-thumb-muted scrollbar-track-background p-2 sm:p-4">
+          
+          </div>
+      */}
+
         {/* Card Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {tabs

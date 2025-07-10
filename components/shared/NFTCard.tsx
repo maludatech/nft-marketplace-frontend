@@ -5,6 +5,7 @@ import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
 import { BsImages } from "react-icons/bs";
 import Image from "next/image";
 import image from "@/public/assets/image";
+import { Card } from "../ui/card";
 
 type RemainingTime = {
   hours: number;
@@ -117,12 +118,12 @@ const NFTCard = () => {
   };
 
   return (
-    <div className="w-full">
-      <div className="body-container w-full pt-8 px-6 md:px-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12">
+    <div className="w-full pt-16 px-6 md:px-12">
+      <div className="body-container w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12">
         {items.map((item, index) => (
-          <div
+          <Card
             key={index}
-            className="relative bg-muted/30 p-4 rounded-xl cursor-pointer transition duration-300 hover:shadow-xl"
+            className="relative p-4 rounded-xl cursor-pointer transition duration-300 hover:shadow-xl"
           >
             {/* NFT Image */}
             <Image
@@ -183,7 +184,7 @@ const NFTCard = () => {
                 <BsImages />
               </div>
             </div>
-          </div>
+          </Card>
         ))}
       </div>
     </div>

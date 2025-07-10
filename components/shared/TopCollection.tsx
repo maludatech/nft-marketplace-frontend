@@ -35,8 +35,8 @@ export const TopCollection = () => {
   const currentData = TABS.find((tab) => tab.key === activeTab)?.data || [];
 
   return (
-    <section className="w-full pt-36">
-      <div className="body-container px-6 md:px-12 flex flex-col gap-8">
+    <section className="w-full pt-36 px-6 md:px-12">
+      <div className="body-container flex flex-col gap-8">
         <h2 className="text-3xl font-bold text-center pb-2">
           Top List Collections.
         </h2>

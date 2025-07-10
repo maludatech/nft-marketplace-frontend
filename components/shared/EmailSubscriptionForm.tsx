@@ -17,8 +17,8 @@ const subscribeItems = [
 
 export const EmailSubscriptionForm = () => {
   return (
-    <section className="w-full min-h-1/2">
-      <div className="body-container pt-36 px-6 md:px-12 w-full flex flex-col md:flex-row gap-16">
+    <section className="w-full min-h-1/2 pt-36 px-6 md:px-12">
+      <div className="body-container w-full flex flex-col md:flex-row gap-16">
         <div className="flex flex-col gap-4 w-full md:w-1/2">
           <h1 className="text-3xl font-bold">Never miss a drop!</h1>
           <p className="text-muted-foreground">
