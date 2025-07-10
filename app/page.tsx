@@ -5,7 +5,7 @@ import { EmailSubscriptionForm } from "@/components/shared/EmailSubscriptionForm
 import { Category } from "@/components/shared/Category";
 import Filter from "@/components/shared/Filter";
 import NFTCard from "@/components/shared/NFTCard";
-import Collection from "@/components/shared/Collection";
+import { Collection } from "@/components/shared/Collection";
 
 export default function Home() {
   return (
