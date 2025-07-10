@@ -123,7 +123,7 @@ const NFTCard = () => {
         {items.map((item, index) => (
           <Card
             key={index}
-            className="relative p-4 rounded-xl cursor-pointer transition duration-300 hover:shadow-xl"
+            className="relative p-4 rounded-xl cursor-pointer transition duration-300 hover:shadow-xl overflow-hidden hover:scale-105"
           >
             {/* NFT Image */}
             <Image
@@ -131,7 +131,7 @@ const NFTCard = () => {
               alt="NFT"
               width={600}
               height={600}
-              className="rounded-xl transition-transform duration-300 hover:scale-105"
+              className="rounded-xl transition-transform duration-300"
             />
 
             {/* Like Button */}
@@ -148,7 +148,7 @@ const NFTCard = () => {
             </div>
 
             {/* Countdown */}
-            <div className="absolute top-4 right-4 bg-muted skew-x-12 rounded-bl-xl px-6 py-1 text-center">
+            <div className="absolute top-4 right-2 bg-card skew-x-12 rounded-bl-xl px-6 py-1 text-center">
               <div className="-skew-x-12">
                 <small className="text-sm">Remaining time</small>
                 <p className="text-base font-bold">
@@ -159,9 +159,9 @@ const NFTCard = () => {
             </div>
 
             {/* Bottom Card Details */}
-            <div className="absolute bottom-0 left-0 w-full flex items-end justify-between px-4 pb-4">
+            <div className="absolute bottom-0 -left-2 w-full flex items-end justify-between px-4 pb-4">
               <div className="relative">
-                <div className="bg-muted skew-x-12 rounded-tr-xl">
+                <div className="bg-card skew-x-12 rounded-tr-xl">
                   <div className="-skew-x-12 px-6 py-2">
                     <h4 className="text-lg font-semibold">{item.NFTTag}</h4>
                     <div className="flex justify-between items-center gap-4 pt-1">
