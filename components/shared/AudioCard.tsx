@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import Image from "next/image";
 import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
 import { TbPlayerPlay, TbPlayerPause } from "react-icons/tb";
-// import LikeProfile from "../../LikeProfile/LikeProfile";
+import LikeProfile from "./LikeProfile";
 import image from "@/public/assets/image";
 
 const AudioCard: React.FC = () => {
@@ -16,11 +16,11 @@ const AudioCard: React.FC = () => {
       {/* Overlay Image */}
       <div className="absolute inset-0 z-0">
         <Image
-          src={image.creatorbackground10}
+          src={image.creatorbackground8}
           alt="background"
           width={500}
           height={500}
-          className="w-full h-full object-cover"
+          className="w-full h-full object-contain"
         />
       </div>
 
@@ -83,7 +83,7 @@ const AudioCard: React.FC = () => {
             </div>
           </div>
           <div className="text-right">
-            {/* <LikeProfile /> */}
+            <LikeProfile />
             <small className="text-xs mt-2 block">24 in stock</small>
           </div>
         </div>
