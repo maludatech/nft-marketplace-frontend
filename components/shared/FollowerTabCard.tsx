@@ -5,6 +5,7 @@ import Image from "next/image";
 import { MdVerified } from "react-icons/md";
 import { TiTick } from "react-icons/ti";
 import { Card } from "../ui/card";
+import { Button } from "../ui/button";
 
 type Props = {
   i: number;
@@ -36,7 +37,7 @@ const FollowerTabCard: React.FC<Props> = ({ i, el }) => {
         </div>
 
         {/* Profile image */}
-        <div className="w-[60px] h-[60px] rounded-full overflow-hidden border-4 border-white dark:border-gray-900 -mt-8 z-10">
+        <div className="w-[60px] h-[60px] rounded-full overflow-hidden border-4 border-card -mt-8 z-10">
           <Image
             src={el?.avatar || "/default-avatar.png"}
             alt="profile"
@@ -48,32 +49,30 @@ const FollowerTabCard: React.FC<Props> = ({ i, el }) => {
 
         {/* Info */}
         <div className="text-center mt-4 flex flex-col items-center gap-1">
-          <h4 className="text-lg font-semibold text-gray-800 dark:text-white flex items-center gap-1">
+          <h4 className="text-lg font-semibold flex items-center gap-1">
             {el?.name || "Giada Mann"}
             <MdVerified className="text-blue-500" />
           </h4>
-          <p className="text-sm text-gray-500 dark:text-gray-400">
-            {el?.eth || "12.321"} ETH
+          <p className="text-sm">
+            <span className="font-bold">{el?.eth || "12.321"} </span>
+            ETH
           </p>
         </div>
 
         {/* Follow button */}
-        <button
+        <Button
           onClick={toggleFollow}
-          className={`mt-3 px-4 py-1 text-sm rounded-full transition-all ${
-            following
-              ? "bg-blue-600 text-white flex items-center gap-1"
-              : "bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-white"
-          }`}
+          variant={following ? "secondary" : "default"}
+          className="mt-3 px-4 py-1 text-sm rounded-full cursor-pointer"
         >
           {following ? (
             <>
-              Followed <TiTick />
+              <TiTick className="w-4 h-4" /> Following
             </>
           ) : (
             "Follow"
           )}
-        </button>
+        </Button>
       </div>
     </Card>
   );
