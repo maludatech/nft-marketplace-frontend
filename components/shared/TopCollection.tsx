@@ -7,6 +7,7 @@ import {
   BsCalendar3,
 } from "react-icons/bs";
 import { DaysComponent } from "./DaysComponent";
+import image from "@/public/assets/image";
 
 const TABS = [
   {
