@@ -7,6 +7,7 @@ import Filter from "@/components/shared/Filter";
 import NFTCard from "@/components/shared/NFTCard";
 import { TopCollection } from "@/components/shared/TopCollection";
 import FollowerTab from "@/components/shared/FollowerTab";
+import { Brand } from "@/components/shared/Brand";
 
 export default function Home() {
   return (
@@ -20,6 +21,7 @@ export default function Home() {
       <NFTCard />
       <EmailSubscriptionForm />
       <Category />
+      <Brand />
     </>
   );
 }

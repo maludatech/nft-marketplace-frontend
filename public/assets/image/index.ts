@@ -31,6 +31,7 @@ import youtube from "./youtube.svg";
 import vimeo from "./vimeo.svg";
 import vector from "./VectorHIW.svg";
 import zgcmq from "./zgcmq.svg";
+import earn from "./earn.png";
 import hero from "./hero.png";
 import nft_1 from "./nft_1.png";
 import getAble from "./getable.png";
@@ -62,6 +63,7 @@ export default {
   getAble,
   nft_1,
   hero,
+  earn,
   creatorbackground1,
   creatorbackground2,
   creatorbackground3,
