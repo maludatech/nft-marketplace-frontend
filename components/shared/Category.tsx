@@ -13,6 +13,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
+import { Card } from "../ui/card";
 
 const categoryItems = [
   {
@@ -53,7 +54,7 @@ const categoryItems = [
   },
 ];
 
-export const Category = () => {
+export const Category: React.FC = () => {
   const autoplay = useMemo(
     () => Autoplay({ delay: 3000, stopOnInteraction: true }),
     []
@@ -79,7 +80,7 @@ export const Category = () => {
                 key={index}
                 className="basis-1/2 sm:basis-1/3 md:basis-1/4 lg:basis-1/5"
               >
-                <div className="bg-muted rounded-md overflow-hidden cursor-pointer">
+                <Card className="rounded-md overflow-hidden cursor-pointer py-0">
                   <div className="relative h-[180px] w-full">
                     <Image
                       src={item.backgroundImage}
@@ -103,7 +104,7 @@ export const Category = () => {
                       </span>
                     </div>
                   </div>
-                </div>
+                </Card>
               </CarouselItem>
             ))}
           </CarouselContent>

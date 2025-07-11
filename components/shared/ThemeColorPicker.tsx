@@ -1,5 +1,6 @@
 "use client";
 
+import React from "react";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -22,7 +23,7 @@ const themeColors: Record<string, string> = {
   "theme-rose": "oklch(0.72 0.23 20)",
 };
 
-export default function ThemeColorSwitcher() {
+export const ThemeColorSwitcher: React.FC = () => {
   const { themeColor, setThemeColor } = useThemeColor();
 
   return (
@@ -59,4 +60,4 @@ export default function ThemeColorSwitcher() {
       </DropdownMenu>
     </div>
   );
-}
+};

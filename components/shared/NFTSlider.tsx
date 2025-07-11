@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import Image from "next/image";
 import Autoplay from "embla-carousel-autoplay";
 import { MdVerified } from "react-icons/md";
@@ -112,7 +112,7 @@ function convertFromSeconds(total: number) {
   return { days, hours, minutes, seconds };
 }
 
-export const NFTSlider = () => {
+export const NFTSlider: React.FC = () => {
   const autoplay = useMemo(
     () => Autoplay({ delay: 4000, stopOnInteraction: true }),
     []

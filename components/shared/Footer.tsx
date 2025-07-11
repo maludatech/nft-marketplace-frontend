@@ -1,5 +1,6 @@
 "use client";
 
+import React from "react";
 import Link from "next/link";
 import {
   FaFacebookF,
@@ -16,7 +17,7 @@ interface Items {
   link: string;
 }
 
-export const Footer = () => {
+export const Footer: React.FC = () => {
   const socialIcons = [
     {
       platform: "facebook",

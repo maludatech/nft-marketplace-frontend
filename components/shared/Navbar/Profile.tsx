@@ -1,5 +1,6 @@
 "use client";
 
+import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useTheme } from "next-themes";
@@ -19,7 +20,20 @@ import {
 import image from "@/public/assets/image";
 import { Separator } from "@/components/ui/separator";
 
-export const Profile = () => {
+const settingsItems = [
+  {
+    icon: <BadgeQuestionMark size={18} />,
+    title: "Help Center",
+    link: "/help",
+  },
+  {
+    icon: <LogOut size={18} />,
+    title: "Disconnect",
+    link: "/disconnect",
+  },
+];
+
+export const Profile: React.FC = () => {
   const { theme } = useTheme();
 
   const shadow =
@@ -42,19 +56,6 @@ export const Profile = () => {
       icon: <UserPen size={18} />,
       title: "Edit Profile",
       link: "/edit-profile",
-    },
-  ];
-
-  const settingsItems = [
-    {
-      icon: <BadgeQuestionMark size={18} />,
-      title: "Help Center",
-      link: "/help",
-    },
-    {
-      icon: <LogOut size={18} />,
-      title: "Disconnect",
-      link: "/disconnect",
     },
   ];
 

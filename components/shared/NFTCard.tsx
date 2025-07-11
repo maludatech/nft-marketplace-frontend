@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import React, { useState } from "react";
 import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
 import { BsImages } from "react-icons/bs";
 import Image from "next/image";
@@ -98,7 +98,7 @@ const initialNFTs: NFTItem[] = [
   },
 ];
 
-const NFTCard = () => {
+const NFTCard: React.FC = () => {
   const [items, setItems] = useState<NFTItem[]>(
     initialNFTs.map((item) => ({ ...item, liked: false }))
   );

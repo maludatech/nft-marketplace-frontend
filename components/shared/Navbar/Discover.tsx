@@ -1,5 +1,6 @@
 "use client";
 
+import React from "react";
 import Link from "next/link";
 import {
   DropdownMenu,
@@ -15,23 +16,23 @@ interface DiscoverItem {
   link: string;
 }
 
-export const Discover = () => {
+const discover: DiscoverItem[] = [
+  { name: "Collection", link: "collection" },
+  { name: "Search", link: "search" },
+  { name: "Author Profile", link: "author-profile" },
+  { name: "NFT Details", link: "NFT-details" },
+  { name: "Account Settings", link: "account-settings" },
+  { name: "Connect Wallet", link: "connect-wallet" },
+  { name: "Blog", link: "blog" },
+];
+
+export const Discover: React.FC = () => {
   const { theme } = useTheme();
 
   const shadow =
     theme === "dark"
       ? "0 10px 30px rgba(255,255,255,0.1)"
       : "0 10px 30px rgba(0,0,0,0.08)";
-
-  const discover: DiscoverItem[] = [
-    { name: "Collection", link: "collection" },
-    { name: "Search", link: "search" },
-    { name: "Author Profile", link: "author-profile" },
-    { name: "NFT Details", link: "NFT-details" },
-    { name: "Account Settings", link: "account-settings" },
-    { name: "Connect Wallet", link: "connect-wallet" },
-    { name: "Blog", link: "blog" },
-  ];
 
   return (
     <DropdownMenu>

@@ -1,9 +1,9 @@
 "use client";
 
+import React from "react";
 import Link from "next/link";
-import Image from "next/image";
 import { useTheme } from "next-themes";
-import { ChevronDown, Gem, Search } from "lucide-react";
+import { Gem, Search } from "lucide-react";
 import { CgMenuRight } from "react-icons/cg";
 import {
   FaFacebookF,
@@ -21,44 +21,40 @@ import {
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Separator } from "@/components/ui/separator";
-import ThemeToggle from "../ThemeToggle";
-import ThemeColorSwitcher from "../ThemeColorPicker";
-import image from "@/public/assets/image";
-import { APP_NAME } from "@/lib/constants";
+import { ThemeToggle } from "../ThemeToggle";
+import { ThemeColorSwitcher } from "../ThemeColorPicker";
 import { Discover } from "./Discover";
 import { HelpCenter } from "./HelpCenter";
 
-export const MobileSidebar = () => {
-  const { theme } = useTheme();
+const socialIcons = [
+  {
+    platform: "facebook",
+    icon: <FaFacebookF className="text-primary text-[18px]" />,
+    link: "https://facebook.com/maludatech",
+  },
+  {
+    platform: "twitter",
+    icon: <FaTwitter className="text-primary text-[18px]" />,
+    link: "https://x.com/maludatechdev",
+  },
+  {
+    platform: "telegram",
+    icon: <FaTelegramPlane className="text-primary text-[18px]" />,
+    link: "https://t.me/maludatechdev",
+  },
+  {
+    platform: "linkedin",
+    icon: <FaLinkedinIn className="text-primary text-[18px]" />,
+    link: "https://linkedin.com/maludatech",
+  },
+  {
+    platform: "instagram",
+    icon: <FaInstagram className="text-primary text-[18px]" />,
+    link: "https://instagram.com/ugotech.eth",
+  },
+];
 
-  const socialIcons = [
-    {
-      platform: "facebook",
-      icon: <FaFacebookF className="text-primary text-[18px]" />,
-      link: "https://facebook.com/maludatech",
-    },
-    {
-      platform: "twitter",
-      icon: <FaTwitter className="text-primary text-[18px]" />,
-      link: "https://x.com/maludatechdev",
-    },
-    {
-      platform: "telegram",
-      icon: <FaTelegramPlane className="text-primary text-[18px]" />,
-      link: "https://t.me/maludatechdev",
-    },
-    {
-      platform: "linkedin",
-      icon: <FaLinkedinIn className="text-primary text-[18px]" />,
-      link: "https://linkedin.com/maludatech",
-    },
-    {
-      platform: "instagram",
-      icon: <FaInstagram className="text-primary text-[18px]" />,
-      link: "https://instagram.com/ugotech.eth",
-    },
-  ];
-
+export const MobileSidebar: React.FC = () => {
   return (
     <Sheet>
       <SheetTrigger asChild>

@@ -3,6 +3,7 @@ import { Send } from "lucide-react";
 import image from "@/public/assets/image";
 import { title } from "process";
 import { Input } from "../ui/input";
+import React from "react";
 
 const subscribeItems = [
   {
@@ -15,7 +16,7 @@ const subscribeItems = [
   },
 ];
 
-export const EmailSubscriptionForm = () => {
+export const EmailSubscriptionForm: React.FC = () => {
   return (
     <section className="w-full min-h-1/2 pt-36 px-6 md:px-12">
       <div className="body-container w-full flex flex-col md:flex-row gap-16">

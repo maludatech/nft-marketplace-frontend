@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import React, { useState } from "react";
 import {
   BsFillAlarmFill,
   BsFillCalendarDateFill,
@@ -29,7 +29,7 @@ const TABS = [
   },
 ];
 
-export const TopCollection = () => {
+export const TopCollection: React.FC = () => {
   const [activeTab, setActiveTab] = useState("popular");
 
   const currentData = TABS.find((tab) => tab.key === activeTab)?.data || [];

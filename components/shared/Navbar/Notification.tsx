@@ -1,5 +1,6 @@
 "use client";
 
+import React from "react";
 import Image from "next/image";
 import { useTheme } from "next-themes";
 import image from "@/public/assets/image";
@@ -11,7 +12,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Bell } from "lucide-react";
 
-export const Notification = () => {
+export const Notification: React.FC = () => {
   const { theme } = useTheme();
 
   const shadow =

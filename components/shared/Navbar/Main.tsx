@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import React from "react";
 import Link from "next/link";
 import { useTheme } from "next-themes";
 import { Search, Gem } from "lucide-react";
@@ -11,10 +11,10 @@ import { Profile } from "./Profile";
 import { MobileSidebar } from "./SideBar";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import ThemeToggle from "../ThemeToggle";
-import ThemeColorPicker from "../ThemeColorPicker";
+import { ThemeToggle } from "../ThemeToggle";
+import { ThemeColorSwitcher } from "../ThemeColorPicker";
 
-export const Main = () => {
+export const Main: React.FC = () => {
   const { theme } = useTheme();
 
   const shadow =
@@ -58,7 +58,7 @@ export const Main = () => {
           <Discover />
           <HelpCenter />
           <div className="flex items-center gap-3 w-full">
-            <ThemeColorPicker />
+            <ThemeColorSwitcher />
             <ThemeToggle />
             <Notification />
             <Button

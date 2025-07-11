@@ -4,8 +4,9 @@ import Image from "next/image";
 import { MdVerified } from "react-icons/md";
 import image from "@/public/assets/image";
 import { Card } from "../ui/card";
+import React from "react";
 
-export const DaysComponent = () => {
+export const DaysComponent: React.FC = () => {
   return (
     <Card className="w-full flex flex-col gap-0 transition-all duration-300 hover:scale-[1.02] cursor-pointer py-0">
       {/* Cover Image */}

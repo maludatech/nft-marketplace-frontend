@@ -1,5 +1,6 @@
 "use client";
 
+import React from "react";
 import Link from "next/link";
 import {
   DropdownMenu,
@@ -15,7 +16,7 @@ interface LinkItem {
   link: string;
 }
 
-export const HelpCenter = () => {
+export const HelpCenter: React.FC = () => {
   const { theme } = useTheme();
 
   const shadow =

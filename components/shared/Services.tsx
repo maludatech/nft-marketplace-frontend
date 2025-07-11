@@ -1,29 +1,31 @@
+import React from "react";
 import Image from "next/image";
 import image from "@/public/assets/image";
 
-export const Services = () => {
-  const services = [
-    {
-      image: image.service1,
-      title: "Filter & Discover",
-      description: "Smart filtering and suggestions make it easy to find",
-    },
-    {
-      image: image.service2,
-      title: "Add to bag",
-      description: "Easily select the correct items and add them to the cart",
-    },
-    {
-      image: image.service3,
-      title: "Fast shipping",
-      description: "The carrier will confirm and ship quickly to you",
-    },
-    {
-      image: image.service4,
-      title: "Enjoy the product",
-      description: "Have fun and enjoy your 5-star quality products",
-    },
-  ];
+const services = [
+  {
+    image: image.service1,
+    title: "Filter & Discover",
+    description: "Smart filtering and suggestions make it easy to find",
+  },
+  {
+    image: image.service2,
+    title: "Add to bag",
+    description: "Easily select the correct items and add them to the cart",
+  },
+  {
+    image: image.service3,
+    title: "Fast shipping",
+    description: "The carrier will confirm and ship quickly to you",
+  },
+  {
+    image: image.service4,
+    title: "Enjoy the product",
+    description: "Have fun and enjoy your 5-star quality products",
+  },
+];
+
+export const Services: React.FC = () => {
   return (
     <section className="w-full min-h-1/2 pt-36 px-6 md:px-12">
       <div className="body-container grid sm:grid-cols-2 lg:grid-cols-4 place-items-start gap-16 sm:gap-8 w-full">

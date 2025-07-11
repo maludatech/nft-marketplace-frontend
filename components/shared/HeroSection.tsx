@@ -1,8 +1,9 @@
+import React from "react";
 import Image from "next/image";
 import image from "@/public/assets/image";
 import { Search } from "lucide-react";
 
-export const HeroSection = () => {
+export const HeroSection: React.FC = () => {
   return (
     <section className="w-full min-h-1/2 pt-36 px-6 md:px-12">
       <div className="body-container flex flex-col md:flex-row gap-14 md:gap-8">
