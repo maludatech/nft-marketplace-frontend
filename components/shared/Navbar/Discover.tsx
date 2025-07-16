@@ -20,7 +20,7 @@ const discover: DiscoverItem[] = [
   { name: "Collection", link: "collection" },
   { name: "Search", link: "search" },
   { name: "Author Profile", link: "author-profile" },
-  { name: "NFT Details", link: "NFT-details" },
+  { name: "NFT Detail", link: "NFT-detail" },
   { name: "Account Settings", link: "account-settings" },
   { name: "Connect Wallet", link: "connect-wallet" },
   { name: "Blog", link: "blog" },

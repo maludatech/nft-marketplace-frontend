@@ -7,19 +7,24 @@ import {
   Instagram,
   Linkedin,
   Youtube,
-  Upload,
-  MoreVertical,
   Verified,
   Flag,
   Copy,
   ChevronDown,
   ChevronUp,
   Check,
+  MoreVertical,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 import clsx from "clsx";
 import image from "@/public/assets/image";
-import { Card } from "@/components/ui/card";
 
 interface Follower {
   background: StaticImageData;
@@ -70,7 +75,6 @@ const FollowerCard = ({ el }: { el: Follower }) => (
 
 const AuthorProfile = () => {
   const [activeTab, setActiveTab] = useState("Collectibles");
-  const [dropdownOpen, setDropdownOpen] = useState(false);
   const [selectedSort, setSelectedSort] = useState(sortOptions[0]);
   const [reportOpen, setReportOpen] = useState(false);
   const [copied, setCopied] = useState(false);
@@ -95,7 +99,6 @@ const AuthorProfile = () => {
 
   return (
     <div className="pt-32 pb-12 px-6 md:px-12 w-full">
-      {/* Profile Card */}
       <div className="body-container flex flex-col gap-8">
         <div className="flex flex-col gap-2 md:flex-row md:items-start md:gap-6">
           <Image
@@ -135,7 +138,7 @@ const AuthorProfile = () => {
           </div>
 
           <div className="flex gap-2 mt-4 md:mt-0 items-center">
-            <Button className="cursor-pointer">Follow</Button>
+            <Button>Follow</Button>
             <MoreVertical
               onClick={() => setReportOpen(!reportOpen)}
               className="cursor-pointer"
@@ -149,54 +152,42 @@ const AuthorProfile = () => {
           </div>
         )}
 
-        {/* Tabs */}
         <div className="flex flex-wrap gap-3 items-center justify-between">
           <div className="flex flex-wrap gap-3">
             {tabs.map((tab) => (
               <Button
                 key={tab}
                 onClick={() => setActiveTab(tab)}
-                className={clsx(
-                  "px-4 py-2 rounded-full text-sm cursor-pointer transition-all duration-300 ease-in-out hover:scale-105 hover:bg-transparent",
-                  activeTab === tab
-                    ? "bg-primary text-white hover:bg-primary"
-                    : "bg-muted text-muted-foreground"
-                )}
+                variant={activeTab === tab ? "default" : "outline"}
+                className="rounded-full text-sm"
               >
                 {tab}
               </Button>
             ))}
           </div>
 
-          <div className="relative">
-            <button
-              onClick={() => setDropdownOpen(!dropdownOpen)}
-              className="flex items-center gap-1 px-3 py-1 border rounded-md"
-            >
-              {selectedSort} {dropdownOpen ? <ChevronUp /> : <ChevronDown />}
-            </button>
-
-            {dropdownOpen && (
-              <Card className="absolute right-0 mt-1.5 rounded-md py-2 border shadow-lg z-10 w-52">
-                {sortOptions.map((option) => (
-                  <div
-                    key={option}
-                    className="flex justify-between items-center px-4 py-1 hover:bg-muted cursor-pointer"
-                    onClick={() => {
-                      setSelectedSort(option);
-                      setDropdownOpen(false);
-                    }}
-                  >
-                    <span>{option}</span>
-                    {selectedSort === option && <Check className="w-4 h-4" />}
-                  </div>
-                ))}
-              </Card>
-            )}
-          </div>
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button variant="outline" className="flex items-center gap-1">
+                {selectedSort}
+                <ChevronDown className="w-4 h-4" />
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end" className="w-52">
+              {sortOptions.map((option) => (
+                <DropdownMenuItem
+                  key={option}
+                  className="flex justify-between items-center"
+                  onClick={() => setSelectedSort(option)}
+                >
+                  <span>{option}</span>
+                  {selectedSort === option && <Check className="w-4 h-4" />}
+                </DropdownMenuItem>
+              ))}
+            </DropdownMenuContent>
+          </DropdownMenu>
         </div>
 
-        {/* Content */}
         {activeTab === "Collectibles" && <NFTGrid items={nftImages} />}
         {activeTab === "Created" && <NFTGrid items={nftImages.slice(0, 2)} />}
         {activeTab === "Liked" && <NFTGrid items={nftImages.slice(1)} />}
