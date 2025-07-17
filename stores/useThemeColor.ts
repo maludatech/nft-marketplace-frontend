@@ -9,7 +9,7 @@ const THEME_COLOR_KEY = "theme-color";
 
 export const useThemeColor = create<ThemeColorStore>((set) => {
   // On first load, get theme from localStorage (defaults to theme-blue)
-  let initialTheme = "theme-blue";
+  let initialTheme = "theme-purple"; // Default theme
 
   if (typeof window !== "undefined") {
     const stored = localStorage.getItem(THEME_COLOR_KEY);
