@@ -1,4 +1,8 @@
 import collection from "./collection.png";
+import founder1 from "./founder1.jpg";
+import founder2 from "./founder2.jpg";
+import founder3 from "./founder3.jpg";
+import founder4 from "./founder4.jpg";
 import creatorbackground1 from "./creatorbackground-1.jpeg";
 import creatorbackground2 from "./creatorbackground-2.jpeg";
 import creatorbackground3 from "./creatorbackground-3.jpeg";
@@ -34,6 +38,7 @@ import vector from "./VectorHIW.svg";
 import zgcmq from "./zgcmq.svg";
 import earn from "./earn.png";
 import hero from "./hero.png";
+import hero2 from "./hero2.png";
 import nft_1 from "./nft_1.png";
 import getAble from "./getable.png";
 import nft_image_1 from "./nft-image-1.png";
@@ -65,8 +70,13 @@ export default {
   getAble,
   nft_1,
   hero,
+  hero2,
   earn,
   upload,
+  founder1,
+  founder2,
+  founder3,
+  founder4,
   creatorbackground1,
   creatorbackground2,
   creatorbackground3,

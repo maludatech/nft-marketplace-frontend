@@ -35,8 +35,14 @@ export const Brand = () => {
           </p>
 
           <div className="flex gap-4">
-            <Button onClick={() => {}}>Create</Button>
-            <Button variant="outline" onClick={() => {}}>
+            <Button onClick={() => {}} className="cursor-pointer">
+              Create
+            </Button>
+            <Button
+              variant="outline"
+              className="cursor-pointer"
+              onClick={() => {}}
+            >
               Discover
             </Button>
           </div>
