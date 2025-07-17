@@ -98,7 +98,7 @@ const AuthorProfile = () => {
   };
 
   return (
-    <div className="pt-32 pb-12 px-6 md:px-12 w-full">
+    <section className="pt-32 pb-12 px-6 md:px-12 w-full">
       <div className="body-container flex flex-col gap-8">
         <div className="flex flex-col gap-2 md:flex-row md:items-start md:gap-6">
           <Image
@@ -206,7 +206,7 @@ const AuthorProfile = () => {
           </div>
         )}
       </div>
-    </div>
+    </section>
   );
 };
 

@@ -10,6 +10,7 @@ import creatorbackground8 from "./creatorbackground-8.jpg";
 import creatorbackground9 from "./creatorbackground-9.jpg";
 import creatorbackground10 from "./creatorbackground-10.jpg";
 import creatorbackground11 from "./creatorbackground-11.jpg";
+import upload from "./upload.png";
 import user1 from "./user-1.png";
 import user2 from "./user-2.png";
 import user3 from "./user-3.png";
@@ -65,6 +66,7 @@ export default {
   nft_1,
   hero,
   earn,
+  upload,
   creatorbackground1,
   creatorbackground2,
   creatorbackground3,

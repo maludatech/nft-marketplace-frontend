@@ -31,7 +31,7 @@ export const Collection: React.FC = () => {
   };
 
   return (
-    <div className="w-full">
+    <section className="w-full">
       {/* Banner */}
       <div className="w-full">
         <div className="hidden md:block">
@@ -166,6 +166,6 @@ export const Collection: React.FC = () => {
           ))}
         </div>
       </div>
-    </div>
+    </section>
   );
 };
