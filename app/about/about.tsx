@@ -61,7 +61,7 @@ const About = () => {
         <div className="flex flex-col-reverse lg:flex-row items-center justify-between gap-12 mb-16">
           <div className="lg:w-1/2 space-y-4">
             <h1 className="text-4xl font-bold">👋 About Us.</h1>
-            <p className="text-muted-foreground text-lg">
+            <p className="text-muted-foreground text-[16px]">
               We’re impartial and independent, and every day we create
               distinctive, world-class programmes and content which inform,
               educate and entertain millions of people around the world.
@@ -80,7 +80,7 @@ const About = () => {
         {/* Founder Section */}
         <div className="text-center mb-10">
           <h2 className="text-3xl font-semibold mb-2">⛱ Founder</h2>
-          <p className="text-muted-foreground">
+          <p className="text-muted-foreground text-sm">
             We’re impartial and independent, and every day we create
             distinctive, world-class programmes and content
           </p>
@@ -106,7 +106,7 @@ const About = () => {
         {/* Facts Section */}
         <div className="text-center mb-10">
           <h2 className="text-3xl font-semibold mb-2">🚀 Fast Facts</h2>
-          <p className="text-muted-foreground">
+          <p className="text-muted-foreground text-sm">
             We’re impartial and independent, and every day we create
             distinctive, world-class programmes and content
           </p>
