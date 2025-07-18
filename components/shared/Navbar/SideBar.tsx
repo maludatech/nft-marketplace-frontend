@@ -2,7 +2,6 @@
 
 import React from "react";
 import Link from "next/link";
-import { useTheme } from "next-themes";
 import { Gem, Search } from "lucide-react";
 import { CgMenuRight } from "react-icons/cg";
 import {
@@ -25,6 +24,7 @@ import { ThemeColorSwitcher } from "../ThemeColorPicker";
 import { Discover } from "./Discover";
 import { HelpCenter } from "./HelpCenter";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
+import "@rainbow-me/rainbowkit/styles.css";
 
 const socialIcons = [
   {
