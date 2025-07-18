@@ -18,13 +18,13 @@ import {
   SheetTrigger,
   SheetTitle,
 } from "@/components/ui/sheet";
-import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Separator } from "@/components/ui/separator";
 import { ThemeToggle } from "../ThemeToggle";
 import { ThemeColorSwitcher } from "../ThemeColorPicker";
 import { Discover } from "./Discover";
 import { HelpCenter } from "./HelpCenter";
+import { ConnectButton } from "@rainbow-me/rainbowkit";
 
 const socialIcons = [
   {
@@ -118,10 +118,7 @@ export const MobileSidebar: React.FC = () => {
           </div>
           <Separator className="w-full" />
           <div className="flex flex-col gap-4">
-            <Button className="cursor-pointer rounded-md mx-6">Create</Button>
-            <Button className="cursor-pointer rounded-md mx-6">
-              Connect Wallet
-            </Button>
+            <ConnectButton />
           </div>
         </div>
       </SheetContent>

@@ -8,10 +8,10 @@ import { HelpCenter } from "./HelpCenter";
 import { Notification } from "./Notification";
 import { Profile } from "./Profile";
 import { MobileSidebar } from "./SideBar";
-import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { ThemeToggle } from "../ThemeToggle";
 import { ThemeColorSwitcher } from "../ThemeColorPicker";
+import { ConnectButton } from "@rainbow-me/rainbowkit";
 
 export const Main: React.FC = () => {
   return (
@@ -50,12 +50,7 @@ export const Main: React.FC = () => {
             <ThemeColorSwitcher />
             <ThemeToggle />
             <Notification />
-            <Button
-              variant="default"
-              className="rounded-md text-lg text-background cursor-pointer ml-2"
-            >
-              Create
-            </Button>
+            <ConnectButton />
             <Profile />
           </div>
         </div>

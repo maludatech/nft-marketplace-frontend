@@ -6,6 +6,7 @@ import { Footer } from "@/components/shared/Footer";
 import { Main } from "@/components/shared/Navbar/Main";
 import { ClientThemeProvider } from "@/components/shared/ClientThemeProvider";
 import { ThemeWrapper } from "@/components/shared/ThemeWrapper";
+import Web3Provider from "@/components/shared/Web3Provider";
 
 export const metadata: Metadata = {
   title: {
@@ -46,10 +47,12 @@ export default function RootLayout({
     <html lang="en">
       <ThemeWrapper>
         <ClientThemeProvider>
-          <Main />
-          {children}
-          <Toaster richColors />
-          <Footer />
+          <Web3Provider>
+            <Main />
+            {children}
+            <Toaster richColors />
+            <Footer />
+          </Web3Provider>
         </ClientThemeProvider>
       </ThemeWrapper>
     </html>
