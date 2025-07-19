@@ -52,7 +52,7 @@ export const WalletConnectButton: React.FC = () => {
               }
 
               return (
-                <div className="flex flex-col gap-2">
+                <div className="flex gap-2">
                   <button
                     onClick={openChainModal}
                     className="w-full rounded-lg bg-muted cursor-pointer text-foreground px-4 py-2 text-sm font-medium hover:bg-muted/70 transition"
