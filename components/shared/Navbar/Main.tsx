@@ -11,7 +11,7 @@ import { MobileSidebar } from "./SideBar";
 import { Input } from "@/components/ui/input";
 import { ThemeToggle } from "../ThemeToggle";
 import { ThemeColorSwitcher } from "../ThemeColorPicker";
-import { ConnectButton } from "@rainbow-me/rainbowkit";
+import { WalletConnectButton } from "../WalletConnectButton";
 
 export const Main: React.FC = () => {
   return (
@@ -50,7 +50,7 @@ export const Main: React.FC = () => {
             <ThemeColorSwitcher />
             <ThemeToggle />
             <Notification />
-            <ConnectButton />
+            <WalletConnectButton />
             <Profile />
           </div>
         </div>

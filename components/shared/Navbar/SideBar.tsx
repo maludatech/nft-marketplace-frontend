@@ -23,8 +23,7 @@ import { ThemeToggle } from "../ThemeToggle";
 import { ThemeColorSwitcher } from "../ThemeColorPicker";
 import { Discover } from "./Discover";
 import { HelpCenter } from "./HelpCenter";
-import { ConnectButton } from "@rainbow-me/rainbowkit";
-import "@rainbow-me/rainbowkit/styles.css";
+import { WalletConnectButton } from "../WalletConnectButton";
 
 const socialIcons = [
   {
@@ -117,8 +116,8 @@ export const MobileSidebar: React.FC = () => {
             <HelpCenter />
           </div>
           <Separator className="w-full" />
-          <div className="flex flex-col gap-4">
-            <ConnectButton />
+          <div className="px-6">
+            <WalletConnectButton />
           </div>
         </div>
       </SheetContent>
